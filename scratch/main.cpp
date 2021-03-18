@@ -17,6 +17,9 @@ int main() {
 
 	std::cout << "\n\n" << r.ToPostScript() << "\n\n";
 
+	Polygon p(7, 55);
+	std::cout << "\n\n" << p.ToPostScript();
+
 	std::cin.get();
 	return 0;
 }
