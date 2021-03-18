@@ -4,16 +4,20 @@
 #include <iostream>
 #include "Point.hpp"
 
+const double PI = 3.14159265358979323846264;
+
 class BoundingBox {
 
 private:
 
 	double minx, maxx, miny, maxy;
+	BoundingBox(double min_x, double max_x, double min_y, double max_y) :
+		minx{ min_x }, maxx{ max_x }, miny{ min_y }, maxy{ max_y }{}
 
 public:
 
-	BoundingBox(double min_x, double max_x, double min_y, double max_y) : 
-		minx{ min_x }, maxx{ max_x }, miny{ min_y }, maxy{ max_y }{}
+	static BoundingBox FromRectangle(double width, double height);
+	static BoundingBox FromPolygon(int numSides, double sideLength);
 
 	double Width() const { return maxx - minx; }
 	double Height() const { return maxy - miny; }
