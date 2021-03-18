@@ -22,7 +22,21 @@ private:
 public:
 	[[nodiscard]] BoundingBox Extent() const override { return bounding; }
 	[[nodiscard]] std::string ToPostScript() const override;
-	Rectangle(double width, double height) : bounding{ 0, width, 0, height } {}
+	Rectangle(double width, double height) : bounding( BoundingBox::FromRectangle(width,height)) {}
+};
+
+class Polygon : Shape {
+
+private:
+	BoundingBox bounding;
+	int num_sides;
+	double side_length;
+	double exterior_angle_radians;
+
+public:
+	[[nodiscard]] BoundingBox Extent() const override { return bounding; }
+	[[nodiscard]] std::string ToPostScript() const override;
+	Polygon(int numSides, double sideLength);
 };
 
 #endif
