@@ -15,7 +15,7 @@ int main() {
 
 	std::cout << "\nRectangle Center : " << r.Extent().Center() << "\n";
 
-	std::cout << "\n\n" << r.ToPostScript() << "\n\n";
+	std::cout << "\n\n" << r.ToPostScript();
 
 	Polygon p(7, 55);
 	std::cout << "\n\n" << p.ToPostScript();
