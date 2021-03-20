@@ -14,7 +14,7 @@ public:
 	
 };
 
-class Rectangle : Shape {
+class Rectangle : public Shape {
 
 private:
 	BoundingBox bounding;
@@ -25,7 +25,7 @@ public:
 	Rectangle(double width, double height) : bounding( BoundingBox::FromRectangle(width,height)) {}
 };
 
-class Polygon : Shape {
+class Polygon : public Shape {
 
 private:
 	BoundingBox bounding;
