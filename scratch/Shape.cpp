@@ -41,3 +41,11 @@ std::string Polygon::ToPostScript() const {
 
 	return output;
 }
+
+std::string Circle::ToPostScript() const {
+	std::string output{ "newpath\n" };
+	output += "0 0 " + std::to_string(_radius) + " 0 360 arc\n";
+	output += "closepath\nstroke\n";
+
+	return output;
+}

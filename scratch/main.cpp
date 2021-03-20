@@ -19,6 +19,9 @@ int main() {
 
 	Polygon p(7, 55);
 	std::cout << "\n\n" << p.ToPostScript();
+	
+	Circle c(72);
+	std::cout << "\n\n" << c.ToPostScript();
 
 	std::cin.get();
 	return 0;

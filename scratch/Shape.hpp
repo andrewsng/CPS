@@ -39,4 +39,18 @@ public:
 	Polygon(int numSides, double sideLength);
 };
 
+class Circle : public Shape {
+
+private:
+	BoundingBox bounding;
+	double _radius;
+
+public:
+	[[nodiscard]] BoundingBox Extent() const override { return bounding; }
+	[[nodiscard]] std::string ToPostScript() const override;
+	Circle(double radius)
+		: bounding(BoundingBox::FromRectangle(2*radius, 2*radius)), _radius(radius)
+	{}
+};
+
 #endif
