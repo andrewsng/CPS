@@ -86,6 +86,7 @@ std::string Triangle::ToPostScript() const
 
 	return output;
 }
+
 Layered::Layered(std::initializer_list<std::shared_ptr<Shape>> list)
 	: bounding(BoundingBox::FromRectangle(
 		std::max(list, [](auto &a, auto &b) { 

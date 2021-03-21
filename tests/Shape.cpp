@@ -65,6 +65,34 @@ std::string Polygon::ToPostScript() const {
 	return output;
 }
 
+std::string Square::ToPostScript() const
+{
+	std::string output{ "newpath\n" };
+
+	output += std::to_string(-Width() / 2) + " ";
+	output += std::to_string(-Height() / 2) + " moveto\n";
+	output += std::to_string(Width()) + " 0 rlineto\n";
+	output += " 0 " + std::to_string(Height()) + " rlineto\n";
+	output += std::to_string(-Width()) + " 0 rlineto\n";
+	output += "closepath\nstroke\n";
+
+	return output;
+}
+
+std::string Triangle::ToPostScript() const
+{
+	std::string output{ "newpath\n" };
+
+	output += std::to_string(-Width() / 2) + " ";
+	output += std::to_string(-Height() / 2) + " moveto\n";
+	output += std::to_string(Width() / 2) + " ";
+	output += std::to_string(Height()) + " rlineto\n";
+	output += std::to_string(Width() / 2) + " ";
+	output += std::to_string(Height()) + " rlineto\n";
+	output += "closepath\nstroke\n";
+
+	return output;
+}
 
 std::string Circle::ToPostScript() const {
 	std::string output{ "newpath\n" };

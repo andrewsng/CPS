@@ -33,6 +33,29 @@ public:
 	Rectangle(double in_width, double in_height) : _width(in_width), _height(in_height) {}
 };
 
+class Square : public Shape {
+
+private:
+	double side_length;
+
+public:
+
+	[[nodiscard]] double Width() const override { return side_length; }
+	[[nodiscard]] double Height() const override { return side_length; }
+	[[nodiscard]] std::string ToPostScript() const override;
+	Square(double side_length);
+};
+
+class Triangle : public Shape {
+private:
+	double side_length;
+public:
+	[[nodiscard]] double Width() const override { return side_length; }
+	[[nodiscard]] double Height() const override { return side_length / 2 * sqrt(3); }
+	[[nodiscard]] std::string ToPostScript() const override;
+	Triangle(double sideLength);
+};
+
 class Polygon : public Shape {
 
 private:
