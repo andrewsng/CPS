@@ -18,6 +18,8 @@ public:
 
 	static BoundingBox FromRectangle(double width, double height);
 	static BoundingBox FromPolygon(int numSides, double sideLength);
+	static BoundingBox FromSquare(double length);
+	static BoundingBox FromTriangle(double length);
 
 	double Width() const { return maxx - minx; }
 	double Height() const { return maxy - miny; }

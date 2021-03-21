@@ -29,6 +29,26 @@ public:
 	Rectangle(double width, double height) : bounding( BoundingBox::FromRectangle(width,height)) {}
 };
 
+class Square : public Shape {
+private:
+	BoundingBox bounding;
+	double side_length;
+public:
+	[[nodiscard]] BoundingBox Extent() const override { return bounding; }
+	[[nodiscard]] std::string ToPostScript() const override;
+	Square(double sideLength) : bounding(BoundingBox::FromSquare(sideLength)) {};
+};
+
+class Triangle : public Shape {
+private:
+	BoundingBox bounding;
+	double side_length;
+public:
+	[[nodiscard]] BoundingBox Extent() const override { return bounding; }
+	[[nodiscard]] std::string ToPostScript() const override;
+	Triangle(double sideLength) : bounding(BoundingBox::FromSquare(sideLength)) {};
+};
+
 class Polygon : public Shape {
 
 private:

@@ -58,6 +58,34 @@ std::string Circle::ToPostScript() const {
 	return output;
 }
 
+std::string Square::ToPostScript() const
+{
+	std::string output{ "newpath\n" };
+
+	output += std::to_string(-bounding.Width() / 2) + " ";
+	output += std::to_string(-bounding.Height() / 2) + " moveto\n";
+	output += std::to_string(bounding.Width()) + " 0 rlineto\n";
+	output += " 0 " + std::to_string(bounding.Height()) + " rlineto\n";
+	output += std::to_string(-bounding.Width()) + " 0 rlineto\n";
+	output += "closepath\nstroke\n";
+
+	return output;
+}
+
+std::string Triangle::ToPostScript() const
+{
+	std::string output{ "newpath\n" };
+
+	output += std::to_string(-bounding.Width() / 2) + " ";
+	output += std::to_string(-bounding.Height() / 2) + " moveto\n";
+	output += std::to_string(bounding.Width() / 2) + " ";
+	output += std::to_string(bounding.Height()) + " rlineto\n";
+	output += std::to_string(bounding.Width() / 2) + " ";
+	output += std::to_string(-bounding.Height()) + " rlineto\n";
+	output += "closepath\nstroke\n";
+
+	return output;
+}
 Layered::Layered(std::initializer_list<std::shared_ptr<Shape>> list)
 	: bounding(BoundingBox::FromRectangle(
 		std::max(list, [](auto &a, auto &b) { 
