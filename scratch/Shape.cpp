@@ -1,4 +1,5 @@
 #include <cmath>
+#include <algorithm>
 #include "Shape.hpp"
 
 std::string Rectangle::ToPostScript() const {
@@ -54,5 +55,27 @@ std::string Circle::ToPostScript() const {
 	output += "0 0 " + std::to_string(_radius) + " 0 360 arc\n";
 	output += "closepath\nstroke\n";
 
+	return output;
+}
+
+Layered::Layered(std::initializer_list<std::shared_ptr<Shape>> list)
+	: bounding(BoundingBox::FromRectangle(
+		std::max(list, [](auto &a, auto &b) { 
+			return a->Extent().Width() < b->Extent().Width();
+			})->Extent().Width(),
+	    std::max(list, [](auto &a, auto &b) {
+			return a->Extent().Height() < b->Extent().Height();
+			})->Extent().Height())),
+	  _shapeList(list)
+{}
+
+std::string Layered::ToPostScript() const {
+	std::string output{};
+	for (const auto &shape : _shapeList)
+	{
+		output += shape->ToPostScript();
+		output += "\n";
+	}
+	
 	return output;
 }

@@ -1,8 +1,12 @@
 #ifndef UAF372_CPS_SHAPE_H
 #define UAF372_CPS_SHAPE_H
 
-#include <string>
 #include "BoundingBox.hpp"
+
+#include <string>
+#include <vector>
+#include <memory>
+#include <initializer_list>
 
 class Shape {
 
@@ -51,6 +55,19 @@ public:
 	Circle(double radius)
 		: bounding(BoundingBox::FromRectangle(2*radius, 2*radius)), _radius(radius)
 	{}
+};
+
+class Layered : public Shape {
+
+private:
+	BoundingBox bounding;
+	std::vector<std::shared_ptr<Shape>> _shapeList;
+	
+public:
+	[[nodiscard]] BoundingBox Extent() const override { return bounding; }
+	[[nodiscard]] std::string ToPostScript() const override;
+	Layered(std::initializer_list<std::shared_ptr<Shape>> list);
+
 };
 
 #endif

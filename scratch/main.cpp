@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include "BoundingBox.hpp"
 #include "Point.hpp"
 #include "Shape.hpp"
@@ -22,9 +23,12 @@ int main() {
 	
 	Circle c(72);
 	std::cout << "\n\n" << c.ToPostScript();
+	
+	Layered l{ std::make_shared<Rectangle>(54, 80),
+			   std::make_shared<Polygon>(5, 72),
+			   std::make_shared<Circle>(25) };
+	std::cout << "\n\n" << l.ToPostScript();
 
 	std::cin.get();
 	return 0;
 }
-
-//just testing
