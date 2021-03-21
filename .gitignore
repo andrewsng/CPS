@@ -2,4 +2,7 @@
 /interpreter-pattern-example/out/
 /scratch/.vs/
 /scratch/out/
+/tests/.vs/
+/tests/out/
 .vscode
+.vs
