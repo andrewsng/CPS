@@ -7,3 +7,14 @@ TEST_CASE("Rectangle ctor requires correct input"){
 
 }
 
+TEST_CASE("Square ctor requires correct input") {
+
+	REQUIRE_THROWS_AS([&]() { Square s(-17.3); }(), std::invalid_argument);
+
+}
+
+TEST_CASE("Circle ctor requires correct input") {
+
+	REQUIRE_THROWS_AS([&]() { Circle c(-21.7); }(), std::invalid_argument);
+
+}
