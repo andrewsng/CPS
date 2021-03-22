@@ -37,3 +37,22 @@ TEST_CASE("Polygon output generates correct number of lines") {
 	REQUIRE(Number_Substring_Occurences(p_out, "rlineto") == num_sides - 1);
 	REQUIRE(Number_Substring_Occurences(p_out, "closepath") == 1);
 }
+
+TEST_CASE("Square output generates correct number of lines") {
+
+	Square s(155.0);
+	std::string s_out = s.ToPostScript();
+
+	REQUIRE(Number_Substring_Occurences(s_out, "rlineto") == 3);
+	REQUIRE(Number_Substring_Occurences(s_out, "closepath") == 1);
+}
+
+
+TEST_CASE("Triangle output generates correct number of lines") {
+
+	Triangle t(92);
+	std::string t_out = t.ToPostScript();
+
+	REQUIRE(Number_Substring_Occurences(t_out, "rlineto") == 2);
+	REQUIRE(Number_Substring_Occurences(t_out, "closepath") == 1);
+}
