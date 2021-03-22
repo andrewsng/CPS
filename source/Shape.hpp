@@ -46,7 +46,7 @@ public:
 	[[nodiscard]] double Width() const override { return _width; }
 	[[nodiscard]] double Height() const override { return _height; }
 	[[nodiscard]] std::string ToPostScript() const override { return ""; }
-	Spacer(double in_width, double in_height) : _width(in_width), _height(in_height) {}
+	Spacer(double width, double height);
 };
 
 class Square : public Shape {
@@ -73,7 +73,7 @@ public:
 	[[nodiscard]] double Width() const override { return _side_length; }
 	[[nodiscard]] double Height() const override { return _side_length / 2 * sqrt(3); }
 	[[nodiscard]] std::string ToPostScript() const override;
-	Triangle(double side_length) : _side_length(side_length) {}
+	Triangle(double side_length);
 };
 
 class Polygon : public Shape {
@@ -82,8 +82,8 @@ private:
 
 	double _width;
 	double _height;
-	int num_sides;
-	double side_length;
+	int _num_sides;
+	double _side_length;
 	double exterior_angle_radians;
 
 public:
@@ -91,7 +91,7 @@ public:
 	[[nodiscard]] double Width() const override { return _width; }
 	[[nodiscard]] double Height() const override { return _height; }
 	[[nodiscard]] std::string ToPostScript() const override;
-	Polygon(int numSides, double sideLength);
+	Polygon(int numSides, double side_length);
 };
 
 class Circle : public Shape {
