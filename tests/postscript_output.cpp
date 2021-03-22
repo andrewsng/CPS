@@ -56,3 +56,23 @@ TEST_CASE("Triangle output generates correct number of lines") {
 	REQUIRE(Number_Substring_Occurences(t_out, "rlineto") == 2);
 	REQUIRE(Number_Substring_Occurences(t_out, "closepath") == 1);
 }
+
+
+TEST_CASE("Circle output generates correct number of lines") {
+
+	Circle c(57);
+	std::string c_out = c.ToPostScript();
+
+	REQUIRE(Number_Substring_Occurences(c_out, "arc") == 1);
+	REQUIRE(Number_Substring_Occurences(c_out, "closepath") == 1);
+}
+
+
+TEST_CASE("Spacer output generates correct number of lines") {
+
+	Spacer s(155, 223);
+	std::string s_out = s.ToPostScript();
+
+	REQUIRE(Number_Substring_Occurences(s_out, "rlineto") == 0);
+	REQUIRE(Number_Substring_Occurences(s_out, "closepath") == 0);
+}
