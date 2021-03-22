@@ -6,4 +6,4 @@ project ("cps-tests")
 include_directories("../source")
 file(GLOB SOURCES "../source/Shape.*")
 
-add_executable (unit-tests catch_main.cpp catch.hpp postscript_output.cpp ${SOURCES})
+add_executable (unit-tests catch_main.cpp catch.hpp postscript_output.cpp ${SOURCES} "shape_construction.cpp")
