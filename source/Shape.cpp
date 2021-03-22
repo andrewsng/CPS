@@ -1,6 +1,13 @@
 #include <algorithm>
+#include <stdexcept>
 #include "Shape.hpp"
 
+Rectangle::Rectangle(double width, double height)
+{
+	if (width < 0 || height < 0) throw std::invalid_argument("Shape dimensions must be positive");
+	_width = width;
+	_height = height;
+}
 
 std::string Rectangle::ToPostScript() const {
 
