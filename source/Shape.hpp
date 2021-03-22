@@ -22,6 +22,7 @@ public:
 class Rectangle : public Shape {
 
 private:
+
 	double _width;
 	double _height;
 
@@ -36,24 +37,28 @@ public:
 class Square : public Shape {
 
 private:
-	double side_length;
+
+	double _side_length;
 
 public:
 
-	[[nodiscard]] double Width() const override { return side_length; }
-	[[nodiscard]] double Height() const override { return side_length; }
+	[[nodiscard]] double Width() const override { return _side_length; }
+	[[nodiscard]] double Height() const override { return _side_length; }
 	[[nodiscard]] std::string ToPostScript() const override;
-	Square(double side_length);
+	Square(double side_length) : _side_length(side_length) {}
 };
 
 class Triangle : public Shape {
 private:
-	double side_length;
+
+	double _side_length;
+
 public:
-	[[nodiscard]] double Width() const override { return side_length; }
-	[[nodiscard]] double Height() const override { return side_length / 2 * sqrt(3); }
+	
+	[[nodiscard]] double Width() const override { return _side_length; }
+	[[nodiscard]] double Height() const override { return _side_length / 2 * sqrt(3); }
 	[[nodiscard]] std::string ToPostScript() const override;
-	Triangle(double sideLength);
+	Triangle(double side_length) : _side_length(side_length) {}
 };
 
 class Polygon : public Shape {
