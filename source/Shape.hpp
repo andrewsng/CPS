@@ -34,6 +34,21 @@ public:
 	Rectangle(double in_width, double in_height) : _width(in_width), _height(in_height) {}
 };
 
+class Spacer : public Shape {
+
+private:
+
+	double _width;
+	double _height;
+
+public:
+
+	[[nodiscard]] double Width() const override { return _width; }
+	[[nodiscard]] double Height() const override { return _height; }
+	[[nodiscard]] std::string ToPostScript() const override { return ""; }
+	Spacer(double in_width, double in_height) : _width(in_width), _height(in_height) {}
+};
+
 class Square : public Shape {
 
 private:
