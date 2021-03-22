@@ -4,7 +4,7 @@
 
 Rectangle::Rectangle(double width, double height)
 {
-	if (width < 0 || height < 0) throw std::invalid_argument("Shape dimensions must be positive");
+	if (width <= 0 || height <= 0) throw std::invalid_argument("Shape dimensions must be positive");
 	_width = width;
 	_height = height;
 }
@@ -72,6 +72,12 @@ std::string Polygon::ToPostScript() const {
 	return output;
 }
 
+Square::Square(double side_length)
+{
+	if (side_length <= 0) throw std::invalid_argument("Shape dimensions must be positive");
+	_side_length = side_length;
+}
+
 std::string Square::ToPostScript() const
 {
 	std::string output{ "newpath\n" };
@@ -99,6 +105,14 @@ std::string Triangle::ToPostScript() const
 	output += "closepath\nstroke\n";
 
 	return output;
+}
+
+Circle::Circle(double radius)
+{
+	if (radius <= 0) throw std::invalid_argument("Shape dimensions must be positive");
+	_radius = radius;
+	_width = 2 * radius;
+	_height = 2 * radius;
 }
 
 std::string Circle::ToPostScript() const {

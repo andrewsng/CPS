@@ -60,7 +60,7 @@ public:
 	[[nodiscard]] double Width() const override { return _side_length; }
 	[[nodiscard]] double Height() const override { return _side_length; }
 	[[nodiscard]] std::string ToPostScript() const override;
-	Square(double side_length) : _side_length(side_length) {}
+	Square(double side_length);
 };
 
 class Triangle : public Shape {
@@ -107,8 +107,7 @@ public:
 	[[nodiscard]] double Width() const override { return _width; }
 	[[nodiscard]] double Height() const override { return _height; }
 	[[nodiscard]] std::string ToPostScript() const override;
-	Circle(double radius) : _width(radius), _height(radius), _radius(radius)
-	{}
+	Circle(double radius);
 };
 
 class Layered : public Shape {
