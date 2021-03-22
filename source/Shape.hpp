@@ -127,4 +127,22 @@ public:
 
 };
 
+
+class VerticalShapes : public Shape {
+
+private:
+
+	double _width;
+	double _height;
+	std::vector<std::shared_ptr<Shape>> _shapeList;
+
+public:
+
+	[[nodiscard]] double Width() const override { return _width; }
+	[[nodiscard]] double Height() const override { return _height; }
+	[[nodiscard]] std::string ToPostScript() const override;
+	VerticalShapes(std::initializer_list<std::shared_ptr<Shape>> list);
+
+};
+
 #endif

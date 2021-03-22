@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <numeric>
 #include <stdexcept>
 #include "Shape.hpp"
 
@@ -155,4 +156,37 @@ Spacer::Spacer(double width, double height)
 	if (width <= 0 || height <= 0) throw std::invalid_argument("Shape dimensions must be positive");
 	_width = width;
 	_height = height;
+}
+
+
+VerticalShapes::VerticalShapes(std::initializer_list<std::shared_ptr<Shape>> list) : _shapeList(list)
+{
+	_width = std::max(list, [](auto& a, auto& b) {	return a->Width() < b->Width();	})->Width();
+	_height = std::accumulate(list.begin(), list.end(), 0.0, [](double sum, const auto& s) {return sum + s->Height(); });
+}
+
+std::string VerticalShapes::ToPostScript() const
+{
+	// assume the "current point" in postscript file is the center
+	// of the first shape; after calling its ToPostScript, need
+	// to move up to center of next shape
+
+	std::string output{};
+
+	// move to bottom-center of first shape
+	output += "0 " + std::to_string(-_shapeList.front()->Height() / 2) + " rmoveto\n";
+
+	for (const auto& shape : _shapeList)
+	{
+		// move from top-center of previous shape to center of current shape
+		output += "0 " + std::to_string(shape->Height() / 2) + " rmoveto\n";
+
+		output += shape->ToPostScript();
+		
+		// move from center of current shape to top-center of current shape
+		output += "0 " + std::to_string(shape->Height() / 2) + " rmoveto\n";
+		output += "\n";
+	}
+
+	return output;
 }

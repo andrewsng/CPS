@@ -24,6 +24,12 @@ int main() {
 			   std::make_shared<Circle>(25) };
 	std::cout << "\n\nLayered Shape\n" << l.ToPostScript();
 
+	VerticalShapes v{ std::make_shared<Rectangle>(54, 80),
+			   std::make_shared<Polygon>(5, 72),
+			   std::make_shared<Circle>(25) };
+	std::cout << "\n\nVertical Shape\n" << v.ToPostScript();
+
+
 	std::cin.get();
 	return 0;
 }
