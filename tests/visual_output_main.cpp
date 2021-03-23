@@ -11,7 +11,7 @@ void Write_Postscript_File(const std::string& filename, const std::shared_ptr<Sh
 	std::ofstream out_file;
 	out_file.open(filename);
 
-	out_file << "350 350 moveto\n";
+	out_file << "200 450 moveto\n";
 	out_file << s_ptr->ToPostScript();
 	out_file << "\nshowpage";
 	out_file.close();
@@ -39,4 +39,14 @@ int main() {
 	auto lay = Layered{ rect, circ, tri, poly, sqr };
 	auto lay_ptr = std::make_shared<Layered>(lay);
 	Write_Postscript_File(outdir + "layer.ps", lay_ptr);
+
+	auto spcr = std::make_shared<Spacer>(35, 35);
+
+	auto vert = VerticalShapes{ circ,spcr,circ };
+	auto vert_ptr = std::make_shared<VerticalShapes>(vert);
+	Write_Postscript_File(outdir + "vert.ps", vert_ptr);
+
+	auto horiz = HorizontalShapes{ tri,spcr,rect,spcr,tri };
+	auto horiz_ptr = std::make_shared<HorizontalShapes>(horiz);
+	Write_Postscript_File(outdir + "horiz.ps", horiz_ptr);
 }
