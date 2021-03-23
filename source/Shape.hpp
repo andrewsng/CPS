@@ -239,4 +239,6 @@ std::shared_ptr<RotatedShape> Rotated(std::shared_ptr<Shape> shape, Angle rotati
 
 std::shared_ptr<LayeredShapes> Layered(std::initializer_list<std::shared_ptr<Shape>> list);
 
+std::shared_ptr<VerticalShapes> Vertical(std::initializer_list<std::shared_ptr<Shape>> list);
+
 #endif

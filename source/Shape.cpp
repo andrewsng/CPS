@@ -337,3 +337,8 @@ std::shared_ptr<LayeredShapes> Layered(std::initializer_list<std::shared_ptr<Sha
 {
 	return std::make_shared<LayeredShapes>(list);
 }
+
+std::shared_ptr<VerticalShapes> Vertical(std::initializer_list<std::shared_ptr<Shape>> list)
+{
+	return std::make_shared<VerticalShapes>(list);
+}

@@ -41,9 +41,8 @@ int main() {
 
 	auto spcr = Spacer(35, 35);
 
-	auto vert = VerticalShapes{ circ,spcr,circ };
-	auto vert_ptr = std::make_shared<VerticalShapes>(vert);
-	Write_Postscript_File(outdir + "vert.ps", vert_ptr);
+	auto vert = Vertical({ circ,spcr,circ });
+	Write_Postscript_File(outdir + "vert.ps", vert);
 
 	auto horiz = HorizontalShapes{ tri,spcr,rect,spcr,tri };
 	auto horiz_ptr = std::make_shared<HorizontalShapes>(horiz);

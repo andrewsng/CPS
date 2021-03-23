@@ -27,10 +27,10 @@ int main() {
 			           Circle(25) });
 	std::cout << "\n\n%LayeredShapes Shape\n" << l->ToPostScript();
 
-	VerticalShapes v{ Rectangle(54, 80),
-			          Polygon(5, 72),
-			          Circle(25) };
-	std::cout << "\n\n%Vertical Shape\n" << v.ToPostScript();
+	auto v = Vertical({ Rectangle(54, 80),
+			            Polygon(5, 72),
+			            Circle(25) });
+	std::cout << "\n\n%Vertical Shape\n" << v->ToPostScript();
 
 	auto sp = Scaled(Polygon(5, 72), 2.75, 2);
 	std::cout << "\n\n%ScaledShape Shape\n" << sp->ToPostScript();
