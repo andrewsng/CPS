@@ -153,7 +153,7 @@ std::string Layered::ToPostScript() const {
 	return output;
 }
 
-Spacer::Spacer(double width, double height)
+SpacerShape::SpacerShape(double width, double height)
 {
 	if (width <= 0 || height <= 0) throw std::invalid_argument("Shape dimensions must be positive");
 	_width = width;
@@ -301,4 +301,9 @@ std::shared_ptr<RectangleShape> Rectangle(double width, double height)
 std::shared_ptr<PolygonShape> Polygon(int numSides, double sideLength)
 {
 	return std::make_shared<PolygonShape>(numSides, sideLength);
+}
+
+std::shared_ptr<SpacerShape> Spacer(double width, double height)
+{
+	return std::make_shared<SpacerShape>(width, height);
 }

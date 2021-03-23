@@ -33,14 +33,14 @@ int main() {
 	auto sqr = std::make_shared<Square>(86);
 	Write_Postscript_File(outdir + "sqr.ps", sqr);
 
-	auto poly = std::make_shared<PolygonShape>(8, 102);
+	auto poly = Polygon(8, 102);
 	Write_Postscript_File(outdir + "poly.ps", poly);
 
 	auto lay = Layered{ rect, circ, tri, poly, sqr };
 	auto lay_ptr = std::make_shared<Layered>(lay);
 	Write_Postscript_File(outdir + "layer.ps", lay_ptr);
 
-	auto spcr = std::make_shared<Spacer>(35, 35);
+	auto spcr = Spacer(35, 35);
 
 	auto vert = VerticalShapes{ circ,spcr,circ };
 	auto vert_ptr = std::make_shared<VerticalShapes>(vert);

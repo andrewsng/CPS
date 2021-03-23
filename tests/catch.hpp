@@ -8670,10 +8670,10 @@ public:
 	}
 };
 
-class Spacer : public Column {
+class SpacerShape : public Column {
 
 public:
-	explicit Spacer(size_t spaceWidth) : Column("") {
+	explicit SpacerShape(size_t spaceWidth) : Column("") {
 		width(spaceWidth);
 	}
 };
@@ -9581,7 +9581,7 @@ namespace detail {
             for( auto const &cols : rows ) {
                 auto row =
                         TextFlow::Column( cols.left ).width( optWidth ).indent( 2 ) +
-                        TextFlow::Spacer(4) +
+                        TextFlow::SpacerShape(4) +
                         TextFlow::Column( cols.right ).width( consoleWidth - 7 - optWidth );
                 os << row << std::endl;
             }
@@ -16320,10 +16320,10 @@ public:
             *this << RowBreak();
 
 			Columns headerCols;
-			Spacer spacer(2);
+			SpacerShape SpacerShape(2);
 			for (auto const& info : m_columnInfos) {
 				headerCols += Column(info.name).width(static_cast<std::size_t>(info.width - 2));
-				headerCols += spacer;
+				headerCols += SpacerShape;
 			}
 			m_os << headerCols << '\n';
 

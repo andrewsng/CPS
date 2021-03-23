@@ -36,9 +36,9 @@ int main() {
 	std::cout << "\n\n%Scaled Shape\n" << sp->ToPostScript();
 	
 	auto shape = std::make_shared<HorizontalShapes>(HorizontalShapes{std::make_shared<PolygonShape>(5, 20),
-	                                                				std::make_shared<Spacer>(15, 15),
+	                                                				Spacer(15, 15),
 																	std::make_shared<Circle>(30),
-	                                                				std::make_shared<Spacer>(15, 15),
+	                                                				Spacer(15, 15),
 																	std::make_shared<RectangleShape>(25, 10)});
 	std::cout << "\n\n%Horizontal Shape\n" << shape->ToPostScript();
 	
