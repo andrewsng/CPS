@@ -12,9 +12,9 @@ TEST_CASE("SquareShape ctor requires correct input") {
 	REQUIRE_THROWS_AS([&]() { SquareShape s(-17.3); }(), std::invalid_argument);
 }
 
-TEST_CASE("Circle ctor requires correct input") {
+TEST_CASE("CircleShape ctor requires correct input") {
 
-	REQUIRE_THROWS_AS([&]() { Circle c(-21.7); }(), std::invalid_argument);
+	REQUIRE_THROWS_AS([&]() { CircleShape c(-21.7); }(), std::invalid_argument);
 }
 
 TEST_CASE("TriangleShape ctor requires correct input") {

@@ -117,7 +117,7 @@ std::string TriangleShape::ToPostScript() const
 	return output;
 }
 
-Circle::Circle(double radius)
+CircleShape::CircleShape(double radius)
 {
 	if (radius <= 0) throw std::invalid_argument("Shape dimensions must be positive");
 	_radius = radius;
@@ -125,7 +125,7 @@ Circle::Circle(double radius)
 	_height = 2 * radius;
 }
 
-std::string Circle::ToPostScript() const {
+std::string CircleShape::ToPostScript() const {
 	
 	std::string output{ "gsave\n" };
 
@@ -316,4 +316,9 @@ std::shared_ptr<SquareShape> Square(double sideLength)
 std::shared_ptr<TriangleShape> Triangle(double sideLength)
 {
 	return std::make_shared<TriangleShape>(sideLength);
+}
+
+std::shared_ptr<CircleShape> Circle(double radius)
+{
+	return std::make_shared<CircleShape>(radius);
 }

@@ -58,9 +58,9 @@ TEST_CASE("TriangleShape output generates correct number of lines") {
 }
 
 
-TEST_CASE("Circle output generates correct number of lines") {
+TEST_CASE("CircleShape output generates correct number of lines") {
 
-	Circle c(57);
+	CircleShape c(57);
 	std::string c_out = c.ToPostScript();
 
 	REQUIRE(Number_Substring_Occurences(c_out, "arc") == 1);
