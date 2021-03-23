@@ -35,4 +35,8 @@ int main() {
 
 	auto poly = std::make_shared<Polygon>(8, 102);
 	Write_Postscript_File(outdir + "poly.ps", poly);
+
+	auto lay = Layered{ rect, circ, tri, poly, sqr };
+	auto lay_ptr = std::make_shared<Layered>(lay);
+	Write_Postscript_File(outdir + "layer.ps", lay_ptr);
 }
