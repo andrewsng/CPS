@@ -173,7 +173,7 @@ std::string VerticalShapes::ToPostScript() const
 	// of the first shape; after calling its ToPostScript, need
 	// to move up to center of next shape
 
-	std::string output{};
+	std::string output{"gsave\n"};
 
 	// move to bottom-center of first shape
 	output += "0 " + std::to_string(-_shapeList.front()->Height() / 2) + " rmoveto\n";
@@ -189,6 +189,7 @@ std::string VerticalShapes::ToPostScript() const
 		output += "0 " + std::to_string(shape->Height() / 2) + " rmoveto\n";
 		output += "\n";
 	}
+	output += "grestore\n";
 
 	return output;
 }
@@ -206,7 +207,7 @@ std::string HorizontalShapes::ToPostScript() const
 	// of the first shape; after calling its ToPostScript, need
 	// to move right to center of next shape
 
-	std::string output{};
+	std::string output{"gsave\n"};
 
 	// move to left-center of first shape
 	output += std::to_string(-_shapeList.front()->Width() / 2) + " 0 rmoveto\n";
@@ -222,6 +223,7 @@ std::string HorizontalShapes::ToPostScript() const
 		output += std::to_string(shape->Width() / 2) + " 0 rmoveto\n";
 		output += "\n";
 	}
+	output += "grestore\n";
 
 	return output;
 }
@@ -241,4 +243,23 @@ std::string Scaled::ToPostScript() const
 Scaled::Scaled(std::shared_ptr<Shape> shape, double factorX, double factorY)
 	:_width(factorX * shape->Width()),_height(factorY * shape->Height()),
 	 _factorX(factorX),_factorY(factorY),_shape(shape)
+{}
+
+std::string Rotated::ToPostScript() const
+{
+	std::string output{};
+
+	output += "gsave\n";
+	output += std::to_string(static_cast<int>(_angle)) + " rotate\n";
+	output += _shape->ToPostScript();
+	output += "grestore\n";
+
+	return output;
+}
+
+Rotated::Rotated(std::shared_ptr<Shape> shape, Angle angle)
+	:_width(angle == Angle::deg180 ? shape->Width() : shape->Height()),
+	 _height(angle == Angle::deg180 ? shape->Height() : shape->Width()),
+	 _angle(angle),
+	 _shape(shape)
 {}

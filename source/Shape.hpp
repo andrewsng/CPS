@@ -182,4 +182,28 @@ public:
 	
 };
 
+enum class Angle {
+	deg90  = 90,
+	deg180 = 180,
+	deg270 = 270
+};
+
+class Rotated : public Shape {
+
+private:
+
+	double _width;
+	double _height;
+	Angle _angle;
+	std::shared_ptr<Shape> _shape;
+
+public:
+
+	[[nodiscard]] double Width() const override { return _width; }
+	[[nodiscard]] double Height() const override { return _height; }
+	[[nodiscard]] std::string ToPostScript() const override;
+	Rotated(std::shared_ptr<Shape> shape, Angle angle);
+	
+};
+
 #endif
