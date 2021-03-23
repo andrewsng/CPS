@@ -18,15 +18,14 @@ std::string Rectangle::ToPostScript() const {
 	// then proceed to draw lines "relative to that position"
 	// connecting to the remaining vertices
 	
-	//std::string output{ "newpath\n" };
-	std::string output{};
+	std::string output{"gsave\n"};
 
 	output += std::to_string(-Width() / 2) + " ";
 	output += std::to_string(-Height() / 2) + " rmoveto\n";
 	output += std::to_string(Width()) + " 0 rlineto\n";
 	output += " 0 " + std::to_string(Height()) + " rlineto\n";
 	output += "-" + std::to_string(Width()) + " 0 rlineto\n";
-	output += "closepath\nstroke\n";
+	output += "closepath\nstroke\ngrestore\n";
 
 	return output;
 }
@@ -58,7 +57,8 @@ Polygon::Polygon(int num_sides, double side_length)
 }
 
 std::string Polygon::ToPostScript() const {
-	std::string output{};
+	
+	std::string output{ "gsave\n" };
 
 	// start by moving to bottom left vertex of polygon (first side drawn is always horizontal at bottom)
 	output += std::to_string(-_side_length / 2) + " ";
@@ -72,7 +72,7 @@ std::string Polygon::ToPostScript() const {
 		double next_y = _side_length * sin(current_direction);
 		output += std::to_string(next_x) + " " + std::to_string(next_y) + " rlineto\n";
 	}
-	output += "closepath\nstroke\n";
+	output += "closepath\nstroke\ngrestore\n";
 
 	return output;
 }
@@ -85,14 +85,14 @@ Square::Square(double side_length)
 
 std::string Square::ToPostScript() const
 {
-	std::string output{ "newpath\n" };
+	std::string output{ "gsave\n" };
 
 	output += std::to_string(-Width() / 2) + " ";
-	output += std::to_string(-Height() / 2) + " moveto\n";
+	output += std::to_string(-Height() / 2) + " rmoveto\n";
 	output += std::to_string(Width()) + " 0 rlineto\n";
 	output += " 0 " + std::to_string(Height()) + " rlineto\n";
 	output += std::to_string(-Width()) + " 0 rlineto\n";
-	output += "closepath\nstroke\n";
+	output += "closepath\nstroke\ngrestore\n";
 
 	return output;
 }
@@ -105,14 +105,14 @@ Triangle::Triangle(double side_length)
 
 std::string Triangle::ToPostScript() const
 {
-	std::string output{};
+	std::string output{ "gsave\n" };
 
 	output += std::to_string(-Width() / 2) + " ";
 	output += std::to_string(-Height() / 2) + " rmoveto\n";
 	output += std::to_string(Width()) + " 0 rlineto\n";
 	output += std::to_string(-Width() / 2) + " ";
 	output += std::to_string(Height()) + " rlineto\n";
-	output += "closepath\nstroke\n";
+	output += "closepath\nstroke\ngrestore\n";
 
 	return output;
 }
@@ -127,11 +127,11 @@ Circle::Circle(double radius)
 
 std::string Circle::ToPostScript() const {
 	
-	std::string output{};
+	std::string output{ "gsave\n" };
 
 	output += "currentpoint /y exch def /x exch def\nnewpath\n";
 	output += "x y " + std::to_string(_radius) + " 0 360 arc\n";
-	output += "closepath\nstroke\n";
+	output += "closepath\nstroke\ngrestore\n";
 
 	return output;
 }
