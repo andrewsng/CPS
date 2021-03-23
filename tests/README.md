@@ -9,6 +9,6 @@ Testing for this project was done in three stages:
 
 * Batch Conversion of PostScript Output Files to PDF to Verify Correct Syntax
 
-![Example Batch Conversion](https://github.com/uaf372/CPS/tests/batch-conv.png)
+![Example Batch Conversion](https://github.com/uaf372/CPS/blob/main/tests/batch-conv.png?raw=true)
 
 * Manual Inspection of Conversion Outputs to Verify Correct Appearance
