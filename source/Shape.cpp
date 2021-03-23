@@ -127,9 +127,11 @@ Circle::Circle(double radius)
 }
 
 std::string Circle::ToPostScript() const {
-	std::string output{ "newpath\n" };
+	
+	std::string output{};
 
-	output += "0 0 " + std::to_string(_radius) + " 0 360 arc\n";
+	output += "currentpoint /y exch def /x exch def\nnewpath\n";
+	output += "x y " + std::to_string(_radius) + " 0 360 arc\n";
 	output += "closepath\nstroke\n";
 
 	return output;
