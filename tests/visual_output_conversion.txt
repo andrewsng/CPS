@@ -1,0 +1,13 @@
+REM example windows batch file running ps2pdf on all generated
+REM test .ps files created by visual_output_main.cpp
+
+REM on windows 7 when an error is encountered it is reported, 
+REM otherwise the batch runs "silently"
+
+@echo off
+del *.pdf
+for %%a in (*.ps) do (
+	ps2pdf %%a %%~na.pdf > nul
+)
+
+pause
