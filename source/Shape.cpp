@@ -105,13 +105,12 @@ Triangle::Triangle(double side_length)
 
 std::string Triangle::ToPostScript() const
 {
-	std::string output{ "newpath\n" };
+	std::string output{};
 
 	output += std::to_string(-Width() / 2) + " ";
-	output += std::to_string(-Height() / 2) + " moveto\n";
-	output += std::to_string(Width() / 2) + " ";
-	output += std::to_string(Height()) + " rlineto\n";
-	output += std::to_string(Width() / 2) + " ";
+	output += std::to_string(-Height() / 2) + " rmoveto\n";
+	output += std::to_string(Width()) + " 0 rlineto\n";
+	output += std::to_string(-Width() / 2) + " ";
 	output += std::to_string(Height()) + " rlineto\n";
 	output += "closepath\nstroke\n";
 
