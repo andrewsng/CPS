@@ -4,5 +4,6 @@
 /source/out/
 /tests/.vs/
 /tests/out/
+/tests/visual_test_output/
 .vscode
 .vs

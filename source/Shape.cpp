@@ -18,10 +18,11 @@ std::string Rectangle::ToPostScript() const {
 	// then proceed to draw lines "relative to that position"
 	// connecting to the remaining vertices
 	
-	std::string output{ "newpath\n" };
+	//std::string output{ "newpath\n" };
+	std::string output{};
 
 	output += std::to_string(-Width() / 2) + " ";
-	output += std::to_string(-Height() / 2) + " moveto\n";
+	output += std::to_string(-Height() / 2) + " rmoveto\n";
 	output += std::to_string(Width()) + " 0 rlineto\n";
 	output += " 0 " + std::to_string(Height()) + " rlineto\n";
 	output += "-" + std::to_string(Width()) + " 0 rlineto\n";
