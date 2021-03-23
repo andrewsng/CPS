@@ -58,12 +58,12 @@ Polygon::Polygon(int num_sides, double side_length)
 }
 
 std::string Polygon::ToPostScript() const {
-	std::string output{ "newpath\n" };
+	std::string output{};
 
 	// start by moving to bottom left vertex of polygon (first side drawn is always horizontal at bottom)
 	output += std::to_string(-_side_length / 2) + " ";
 	output += std::to_string(-Height() / 2);
-	output += " moveto\n";
+	output += " rmoveto\n";
 
 	for (int i = 0; i < _num_sides - 1; i++) {
 
