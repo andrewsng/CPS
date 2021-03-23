@@ -22,10 +22,10 @@ int main() {
 	Plus pl(15, 3);
 	std::cout << "\n\n%Plus\n" << pl.ToPostScript();
 
-	Layered l{ Rectangle(54, 80),
-			   Polygon(5, 72),
-			   Circle(25) };
-	std::cout << "\n\n%Layered Shape\n" << l.ToPostScript();
+	auto l = Layered({ Rectangle(54, 80),
+			           Polygon(5, 72),
+			           Circle(25) });
+	std::cout << "\n\n%LayeredShapes Shape\n" << l->ToPostScript();
 
 	VerticalShapes v{ Rectangle(54, 80),
 			          Polygon(5, 72),
@@ -42,9 +42,9 @@ int main() {
 																	Rectangle(25, 10)});
 	std::cout << "\n\n%Horizontal Shape\n" << shape->ToPostScript();
 	
-	auto rot = std::make_shared<Layered>(Layered{Rotated(shape, Angle::deg90),
-	                                             Rotated(shape, Angle::deg180),
-											     Rotated(shape, Angle::deg270)});
+	auto rot = Layered({Rotated(shape, Angle::deg90),
+	                    Rotated(shape, Angle::deg180),
+						Rotated(shape, Angle::deg270)});
 	std::cout << "\n\n%RotatedShape Shapes\n" << rot->ToPostScript();
 
 	std::cin.get();

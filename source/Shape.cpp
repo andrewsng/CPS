@@ -136,13 +136,13 @@ std::string CircleShape::ToPostScript() const {
 	return output;
 }
 
-Layered::Layered(std::initializer_list<std::shared_ptr<Shape>> list) : _shapeList(list) 
+LayeredShapes::LayeredShapes(std::initializer_list<std::shared_ptr<Shape>> list) : _shapeList(list) 
 {
 	_width = std::max(list, [](auto& a, auto& b) {	return a->Width() < b->Width();	})->Width();
 	_height = std::max(list, [](auto& a, auto& b) {	return a->Height() < b->Height(); })->Height();
 }
 
-std::string Layered::ToPostScript() const {
+std::string LayeredShapes::ToPostScript() const {
 	std::string output{};
 	for (const auto &shape : _shapeList)
 	{
@@ -331,4 +331,9 @@ std::shared_ptr<ScaledShape> Scaled(std::shared_ptr<Shape> shape, double fx, dou
 std::shared_ptr<RotatedShape> Rotated(std::shared_ptr<Shape> shape, Angle rotationAngle)
 {
 	return std::make_shared<RotatedShape>(shape, rotationAngle);
+}
+
+std::shared_ptr<LayeredShapes> Layered(std::initializer_list<std::shared_ptr<Shape>> list)
+{
+	return std::make_shared<LayeredShapes>(list);
 }

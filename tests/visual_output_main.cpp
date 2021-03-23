@@ -36,9 +36,8 @@ int main() {
 	auto poly = Polygon(8, 102);
 	Write_Postscript_File(outdir + "poly.ps", poly);
 
-	auto lay = Layered{ rect, circ, tri, poly, sqr };
-	auto lay_ptr = std::make_shared<Layered>(lay);
-	Write_Postscript_File(outdir + "layer.ps", lay_ptr);
+	auto lay = Layered({ rect, circ, tri, poly, sqr });
+	Write_Postscript_File(outdir + "layer.ps", lay);
 
 	auto spcr = Spacer(35, 35);
 
@@ -51,6 +50,5 @@ int main() {
 	Write_Postscript_File(outdir + "horiz.ps", horiz_ptr);
 
 	auto scl = Scaled(poly, 1.25, 1.75);
-	auto lay_poly = Layered{ poly, scl };
-	Write_Postscript_File(outdir + "scale.ps", std::make_shared<Layered>(lay_poly));
+	Write_Postscript_File(outdir + "scale.ps", Layered({ poly, scl }));
 }
