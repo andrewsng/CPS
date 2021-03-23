@@ -76,7 +76,7 @@ public:
 	Triangle(double side_length);
 };
 
-class Polygon : public Shape {
+class PolygonShape : public Shape {
 
 private:
 
@@ -91,7 +91,7 @@ public:
 	[[nodiscard]] double Width() const override { return _width; }
 	[[nodiscard]] double Height() const override { return _height; }
 	[[nodiscard]] std::string ToPostScript() const override;
-	Polygon(int numSides, double side_length);
+	PolygonShape(int numSides, double side_length);
 };
 
 class Circle : public Shape {
@@ -222,5 +222,7 @@ public:
 
 
 std::shared_ptr<RectangleShape> Rectangle(double width, double height);
+
+std::shared_ptr<PolygonShape> Polygon(int numSides, double sideLength);
 
 #endif

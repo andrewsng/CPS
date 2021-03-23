@@ -7,8 +7,8 @@ int main() {
 	auto r = Rectangle(17.5, 32);
 	std::cout << "\n\n%RectangleShape\n" << r->ToPostScript();
 
-	Polygon p(7, 55);
-	std::cout << "\n\n%Polygon\n" << p.ToPostScript();
+	auto p = Polygon(7, 55);
+	std::cout << "\n\n%PolygonShape\n" << p->ToPostScript();
 	
 	Circle c(72);
 	std::cout << "\n\n%Circle\n" << c.ToPostScript();
@@ -23,19 +23,19 @@ int main() {
 	std::cout << "\n\n%Plus\n" << pl.ToPostScript();
 
 	Layered l{ std::make_shared<RectangleShape>(54, 80),
-			   std::make_shared<Polygon>(5, 72),
+			   std::make_shared<PolygonShape>(5, 72),
 			   std::make_shared<Circle>(25) };
 	std::cout << "\n\n%Layered Shape\n" << l.ToPostScript();
 
 	VerticalShapes v{ std::make_shared<RectangleShape>(54, 80),
-			   std::make_shared<Polygon>(5, 72),
+			   std::make_shared<PolygonShape>(5, 72),
 			   std::make_shared<Circle>(25) };
 	std::cout << "\n\n%Vertical Shape\n" << v.ToPostScript();
 
-	auto sp = std::make_shared<Scaled>(std::make_shared<Polygon>(5, 72), 2.75, 2);
+	auto sp = std::make_shared<Scaled>(std::make_shared<PolygonShape>(5, 72), 2.75, 2);
 	std::cout << "\n\n%Scaled Shape\n" << sp->ToPostScript();
 	
-	auto shape = std::make_shared<HorizontalShapes>(HorizontalShapes{std::make_shared<Polygon>(5, 20),
+	auto shape = std::make_shared<HorizontalShapes>(HorizontalShapes{std::make_shared<PolygonShape>(5, 20),
 	                                                				std::make_shared<Spacer>(15, 15),
 																	std::make_shared<Circle>(30),
 	                                                				std::make_shared<Spacer>(15, 15),

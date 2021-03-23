@@ -30,9 +30,9 @@ std::string RectangleShape::ToPostScript() const {
 	return output;
 }
 
-Polygon::Polygon(int num_sides, double side_length)
+PolygonShape::PolygonShape(int num_sides, double side_length)
 {
-	if (num_sides <= 3) throw std::invalid_argument("Regular polygon cannot have fewer than 3 sides");
+	if (num_sides <= 3) throw std::invalid_argument("Regular PolygonShape cannot have fewer than 3 sides");
 	if (side_length <= 0) throw std::invalid_argument("Shape dimensions must be positive");
 
 	_num_sides = num_sides;
@@ -56,11 +56,11 @@ Polygon::Polygon(int num_sides, double side_length)
 	}
 }
 
-std::string Polygon::ToPostScript() const {
+std::string PolygonShape::ToPostScript() const {
 	
 	std::string output{ "gsave\n" };
 
-	// start by moving to bottom left vertex of polygon (first side drawn is always horizontal at bottom)
+	// start by moving to bottom left vertex of PolygonShape (first side drawn is always horizontal at bottom)
 	output += std::to_string(-_side_length / 2) + " ";
 	output += std::to_string(-Height() / 2);
 	output += " rmoveto\n";
@@ -296,4 +296,9 @@ Rotated::Rotated(std::shared_ptr<Shape> shape, Angle angle)
 std::shared_ptr<RectangleShape> Rectangle(double width, double height)
 {
 	return std::make_shared<RectangleShape>(width, height);
+}
+
+std::shared_ptr<PolygonShape> Polygon(int numSides, double sideLength)
+{
+	return std::make_shared<PolygonShape>(numSides, sideLength);
 }

@@ -28,10 +28,10 @@ TEST_CASE("RectangleShape output generates correct number of lines") {
 }
 
 
-TEST_CASE("Polygon output generates correct number of lines") {
+TEST_CASE("PolygonShape output generates correct number of lines") {
 
 	int num_sides = 17;
-	Polygon p(num_sides, 37.5);
+	PolygonShape p(num_sides, 37.5);
 	std::string p_out = p.ToPostScript();
 
 	REQUIRE(Number_Substring_Occurences(p_out, "rlineto") == num_sides - 1);
