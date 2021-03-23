@@ -177,7 +177,7 @@ public:
 
 };
 
-class Scaled : public Shape {
+class ScaledShape : public Shape {
 
 private:
 
@@ -192,7 +192,7 @@ public:
 	[[nodiscard]] double Width() const override { return _width; }
 	[[nodiscard]] double Height() const override { return _height; }
 	[[nodiscard]] std::string ToPostScript() const override;
-	Scaled(std::shared_ptr<Shape> shape, double factorX, double factorY);
+	ScaledShape(std::shared_ptr<Shape> shape, double factorX, double factorY);
 	
 };
 
@@ -232,5 +232,7 @@ std::shared_ptr<SquareShape> Square(double sideLength);
 std::shared_ptr<TriangleShape> Triangle(double sideLength);
 
 std::shared_ptr<CircleShape> Circle(double radius);
+
+std::shared_ptr<ScaledShape> Scaled(std::shared_ptr<Shape> shape, double fx, double fy);
 
 #endif

@@ -256,7 +256,7 @@ std::string HorizontalShapes::ToPostScript() const
 	return output;
 }
 
-std::string Scaled::ToPostScript() const
+std::string ScaledShape::ToPostScript() const
 {
 	std::string output{};
 
@@ -268,7 +268,7 @@ std::string Scaled::ToPostScript() const
 	return output;
 }
 
-Scaled::Scaled(std::shared_ptr<Shape> shape, double factorX, double factorY)
+ScaledShape::ScaledShape(std::shared_ptr<Shape> shape, double factorX, double factorY)
 	:_width(factorX * shape->Width()),_height(factorY * shape->Height()),
 	 _factorX(factorX),_factorY(factorY),_shape(shape)
 {}
@@ -321,4 +321,9 @@ std::shared_ptr<TriangleShape> Triangle(double sideLength)
 std::shared_ptr<CircleShape> Circle(double radius)
 {
 	return std::make_shared<CircleShape>(radius);
+}
+
+std::shared_ptr<ScaledShape> Scaled(std::shared_ptr<Shape> shape, double fx, double fy)
+{
+	return std::make_shared<ScaledShape>(shape, fx, fy);
 }
