@@ -3,14 +3,14 @@
 #include <stdexcept>
 #include "Shape.hpp"
 
-Rectangle::Rectangle(double width, double height)
+RectangleShape::RectangleShape(double width, double height)
 {
 	if (width <= 0 || height <= 0) throw std::invalid_argument("Shape dimensions must be positive");
 	_width = width;
 	_height = height;
 }
 
-std::string Rectangle::ToPostScript() const {
+std::string RectangleShape::ToPostScript() const {
 
 	// when writing output to PostScript we start at the
 	// center of the shape's bounding box, so begin the
@@ -171,7 +171,8 @@ Plus::Plus(double crosslength, double crosswidth)
 std::string Plus::ToPostScript() const {
 	std::string output{ "gsave\n" };
 
-	output += std::to_string(_crosswidth / 2) + " " + std::to_string(_crosswidth / 2);
+	output += std::to_string(_crosswidth / 2) + " ";
+	output += std::to_string(_crosswidth / 2) + " rmoveto\n";
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -290,3 +291,9 @@ Rotated::Rotated(std::shared_ptr<Shape> shape, Angle angle)
 	 _angle(angle),
 	 _shape(shape)
 {}
+
+
+std::shared_ptr<RectangleShape> Rectangle(double width, double height)
+{
+	return std::make_shared<RectangleShape>(width, height);
+}

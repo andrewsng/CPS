@@ -18,9 +18,9 @@ int Number_Substring_Occurences(const std::string& input, const std::string& sub
 	return num_substrings;
 }
 
-TEST_CASE("Rectangle output generates correct number of lines") {
+TEST_CASE("RectangleShape output generates correct number of lines") {
 
-	Rectangle r(47, 52);
+	RectangleShape r(47, 52);
 	std::string r_out = r.ToPostScript();
 
 	REQUIRE(Number_Substring_Occurences(r_out, "rlineto") == 3);

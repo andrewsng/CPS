@@ -19,7 +19,7 @@ public:
 	virtual ~Shape() = default;
 };
 
-class Rectangle : public Shape {
+class RectangleShape : public Shape {
 
 private:
 
@@ -31,7 +31,7 @@ public:
 	[[nodiscard]] double Width() const override { return _width; }
 	[[nodiscard]] double Height() const override { return _height; }
 	[[nodiscard]] std::string ToPostScript() const override;
-	Rectangle(double width, double height);
+	RectangleShape(double width, double height);
 };
 
 class Spacer : public Shape {
@@ -219,5 +219,8 @@ public:
 	Rotated(std::shared_ptr<Shape> shape, Angle angle);
 	
 };
+
+
+std::shared_ptr<RectangleShape> Rectangle(double width, double height);
 
 #endif
