@@ -110,7 +110,7 @@ public:
 	CircleShape(double radius);
 };
 
-class Plus : public Shape {
+class PlusShape : public Shape {
 private:
 
 	double _crosslength;
@@ -121,7 +121,7 @@ public:
 	[[nodiscard]] double Height() const override { return _crosslength * 2 + _crosswidth * 2; }
 	[[nodiscard]] double Width() const override { return _crosslength * 2 + _crosswidth * 2; }
 	[[nodiscard]] std::string ToPostScript() const override;
-	Plus(double crosslength, double crosswidth);
+	PlusShape(double crosslength, double crosswidth);
 };
 
 class LayeredShapes : public Shape {
@@ -232,6 +232,8 @@ std::shared_ptr<SquareShape> Square(double sideLength);
 std::shared_ptr<TriangleShape> Triangle(double sideLength);
 
 std::shared_ptr<CircleShape> Circle(double radius);
+
+std::shared_ptr<PlusShape> Plus(double crossLength, double crossWidth);
 
 std::shared_ptr<ScaledShape> Scaled(std::shared_ptr<Shape> shape, double fx, double fy);
 

@@ -160,7 +160,7 @@ SpacerShape::SpacerShape(double width, double height)
 	_height = height;
 }
 
-Plus::Plus(double crosslength, double crosswidth)
+PlusShape::PlusShape(double crosslength, double crosswidth)
 {
 	if (crosslength <= 0) throw std::invalid_argument("Shape dimensions must be positive");
 	if (crosswidth <= 0) throw std::invalid_argument("Shape dimensions must be positive");
@@ -168,7 +168,7 @@ Plus::Plus(double crosslength, double crosswidth)
 	_crosswidth = crosswidth;
 }
 
-std::string Plus::ToPostScript() const {
+std::string PlusShape::ToPostScript() const {
 	std::string output{ "gsave\n" };
 
 	output += std::to_string(_crosswidth / 2) + " ";
@@ -321,6 +321,11 @@ std::shared_ptr<TriangleShape> Triangle(double sideLength)
 std::shared_ptr<CircleShape> Circle(double radius)
 {
 	return std::make_shared<CircleShape>(radius);
+}
+
+std::shared_ptr<PlusShape> Plus(double crossLength, double crossWidth)
+{
+	return std::make_shared<PlusShape>(crossLength, crossWidth);
 }
 
 std::shared_ptr<ScaledShape> Scaled(std::shared_ptr<Shape> shape, double fx, double fy)

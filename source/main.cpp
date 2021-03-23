@@ -19,8 +19,8 @@ int main() {
 	auto t = Triangle(1.5);
 	std::cout << "\n\n%TriangleShape\n" << t->ToPostScript();
 
-	Plus pl(15, 3);
-	std::cout << "\n\n%Plus\n" << pl.ToPostScript();
+	auto pl = Plus(50, 50);
+	std::cout << "\n\n%PlusShape\n" << pl->ToPostScript();
 
 	auto l = Layered({ Rectangle(54, 80),
 			           Polygon(5, 72),
