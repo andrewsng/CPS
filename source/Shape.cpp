@@ -190,3 +190,20 @@ std::string VerticalShapes::ToPostScript() const
 
 	return output;
 }
+
+[[nodiscard]] std::string Scaled::ToPostScript() const
+{
+	std::string output{};
+
+	output += "gsave\n";
+	output += std::to_string(_factorX) + " " + std::to_string(_factorY) + " scale\n";
+	output += _shape->ToPostScript();
+	output += "grestore\n";
+
+	return output;
+}
+
+Scaled::Scaled(std::shared_ptr<Shape> shape, double factorX, double factorY)
+	:_width(factorX * shape->Width()),_height(factorY * shape->Height()),
+	 _factorX(factorX),_factorY(factorY),_shape(shape)
+{}

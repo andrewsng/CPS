@@ -145,4 +145,23 @@ public:
 
 };
 
+class Scaled : public Shape {
+
+private:
+
+	double _width;
+	double _height;
+	double _factorX;
+	double _factorY;
+	std::shared_ptr<Shape> _shape;
+
+public:
+
+	[[nodiscard]] double Width() const override { return _width; }
+	[[nodiscard]] double Height() const override { return _height; }
+	[[nodiscard]] std::string ToPostScript() const override;
+	Scaled(std::shared_ptr<Shape> shape, double factorX, double factorY);
+	
+};
+
 #endif

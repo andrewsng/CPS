@@ -29,6 +29,8 @@ int main() {
 			   std::make_shared<Circle>(25) };
 	std::cout << "\n\nVertical Shape\n" << v.ToPostScript();
 
+	auto sp = std::make_shared<Scaled>(std::make_shared<Polygon>(5, 72), 2.75, 2);
+	std::cout << "\n\nScaled Shape\n" << sp->ToPostScript();
 
 	std::cin.get();
 	return 0;
