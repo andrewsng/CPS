@@ -23,4 +23,10 @@ int main() {
 
 	auto rect = std::make_shared<Rectangle>(55, 85);
 	Write_Postscript_File(outdir + "rect.ps", rect);
+
+	auto circ = std::make_shared<Circle>(65);
+	Write_Postscript_File(outdir + "circ.ps", circ);
+
+	auto tri = std::make_shared<Triangle>(107);
+	Write_Postscript_File(outdir + "tri.ps", tri);
 }
