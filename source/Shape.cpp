@@ -273,7 +273,7 @@ ScaledShape::ScaledShape(std::shared_ptr<Shape> shape, double factorX, double fa
 	 _factorX(factorX),_factorY(factorY),_shape(shape)
 {}
 
-std::string Rotated::ToPostScript() const
+std::string RotatedShape::ToPostScript() const
 {
 	std::string output{};
 
@@ -285,7 +285,7 @@ std::string Rotated::ToPostScript() const
 	return output;
 }
 
-Rotated::Rotated(std::shared_ptr<Shape> shape, Angle angle)
+RotatedShape::RotatedShape(std::shared_ptr<Shape> shape, Angle angle)
 	:_width(angle == Angle::deg180 ? shape->Width() : shape->Height()),
 	 _height(angle == Angle::deg180 ? shape->Height() : shape->Width()),
 	 _angle(angle),
@@ -326,4 +326,9 @@ std::shared_ptr<CircleShape> Circle(double radius)
 std::shared_ptr<ScaledShape> Scaled(std::shared_ptr<Shape> shape, double fx, double fy)
 {
 	return std::make_shared<ScaledShape>(shape, fx, fy);
+}
+
+std::shared_ptr<RotatedShape> Rotated(std::shared_ptr<Shape> shape, Angle rotationAngle)
+{
+	return std::make_shared<RotatedShape>(shape, rotationAngle);
 }

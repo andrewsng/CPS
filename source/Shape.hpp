@@ -202,7 +202,7 @@ enum class Angle {
 	deg270 = 270
 };
 
-class Rotated : public Shape {
+class RotatedShape : public Shape {
 
 private:
 
@@ -216,7 +216,7 @@ public:
 	[[nodiscard]] double Width() const override { return _width; }
 	[[nodiscard]] double Height() const override { return _height; }
 	[[nodiscard]] std::string ToPostScript() const override;
-	Rotated(std::shared_ptr<Shape> shape, Angle angle);
+	RotatedShape(std::shared_ptr<Shape> shape, Angle angle);
 	
 };
 
@@ -234,5 +234,7 @@ std::shared_ptr<TriangleShape> Triangle(double sideLength);
 std::shared_ptr<CircleShape> Circle(double radius);
 
 std::shared_ptr<ScaledShape> Scaled(std::shared_ptr<Shape> shape, double fx, double fy);
+
+std::shared_ptr<RotatedShape> Rotated(std::shared_ptr<Shape> shape, Angle rotationAngle);
 
 #endif

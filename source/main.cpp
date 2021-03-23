@@ -42,10 +42,10 @@ int main() {
 																	Rectangle(25, 10)});
 	std::cout << "\n\n%Horizontal Shape\n" << shape->ToPostScript();
 	
-	auto rot = std::make_shared<Layered>(Layered{std::make_shared<Rotated>(shape, Angle::deg90),
-	                                           std::make_shared<Rotated>(shape, Angle::deg180),
-											   std::make_shared<Rotated>(shape, Angle::deg270)});
-	std::cout << "\n\n%Rotated Shapes\n" << rot->ToPostScript();
+	auto rot = std::make_shared<Layered>(Layered{Rotated(shape, Angle::deg90),
+	                                             Rotated(shape, Angle::deg180),
+											     Rotated(shape, Angle::deg270)});
+	std::cout << "\n\n%RotatedShape Shapes\n" << rot->ToPostScript();
 
 	std::cin.get();
 	return 0;
