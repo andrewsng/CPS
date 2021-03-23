@@ -241,4 +241,6 @@ std::shared_ptr<LayeredShapes> Layered(std::initializer_list<std::shared_ptr<Sha
 
 std::shared_ptr<VerticalShapes> Vertical(std::initializer_list<std::shared_ptr<Shape>> list);
 
+std::shared_ptr<HorizontalShapes> Horizontal(std::initializer_list<std::shared_ptr<Shape>> list);
+
 #endif

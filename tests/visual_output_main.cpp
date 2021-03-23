@@ -44,9 +44,8 @@ int main() {
 	auto vert = Vertical({ circ,spcr,circ });
 	Write_Postscript_File(outdir + "vert.ps", vert);
 
-	auto horiz = HorizontalShapes{ tri,spcr,rect,spcr,tri };
-	auto horiz_ptr = std::make_shared<HorizontalShapes>(horiz);
-	Write_Postscript_File(outdir + "horiz.ps", horiz_ptr);
+	auto horiz = Horizontal({ tri,spcr,rect,spcr,tri });
+	Write_Postscript_File(outdir + "horiz.ps", horiz);
 
 	auto scl = Scaled(poly, 1.25, 1.75);
 	Write_Postscript_File(outdir + "scale.ps", Layered({ poly, scl }));

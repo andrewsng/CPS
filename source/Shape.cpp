@@ -342,3 +342,8 @@ std::shared_ptr<VerticalShapes> Vertical(std::initializer_list<std::shared_ptr<S
 {
 	return std::make_shared<VerticalShapes>(list);
 }
+
+std::shared_ptr<HorizontalShapes> Horizontal(std::initializer_list<std::shared_ptr<Shape>> list)
+{
+	return std::make_shared<HorizontalShapes>(list);
+}

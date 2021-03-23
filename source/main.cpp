@@ -35,11 +35,11 @@ int main() {
 	auto sp = Scaled(Polygon(5, 72), 2.75, 2);
 	std::cout << "\n\n%ScaledShape Shape\n" << sp->ToPostScript();
 	
-	auto shape = std::make_shared<HorizontalShapes>(HorizontalShapes{Polygon(5, 20),
-	                                                				Spacer(15, 15),
-																	Circle(30),
-	                                                				Spacer(15, 15),
-																	Rectangle(25, 10)});
+	auto shape = Horizontal({Polygon(5, 20),
+	                         Spacer(15, 15),
+							 Circle(30),
+	                         Spacer(15, 15),
+							 Rectangle(25, 10)});
 	std::cout << "\n\n%Horizontal Shape\n" << shape->ToPostScript();
 	
 	auto rot = Layered({Rotated(shape, Angle::deg90),
