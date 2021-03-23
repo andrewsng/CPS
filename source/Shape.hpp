@@ -145,6 +145,24 @@ public:
 
 };
 
+
+class HorizontalShapes : public Shape {
+
+private:
+
+	double _width;
+	double _height;
+	std::vector<std::shared_ptr<Shape>> _shapeList;
+
+public:
+
+	[[nodiscard]] double Width() const override { return _width; }
+	[[nodiscard]] double Height() const override { return _height; }
+	[[nodiscard]] std::string ToPostScript() const override;
+	HorizontalShapes(std::initializer_list<std::shared_ptr<Shape>> list);
+
+};
+
 class Scaled : public Shape {
 
 private:

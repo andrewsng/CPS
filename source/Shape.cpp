@@ -191,7 +191,40 @@ std::string VerticalShapes::ToPostScript() const
 	return output;
 }
 
-[[nodiscard]] std::string Scaled::ToPostScript() const
+HorizontalShapes::HorizontalShapes(std::initializer_list<std::shared_ptr<Shape>> list) : _shapeList(list)
+{
+	_width = std::accumulate(list.begin(), list.end(), 0.0, [](double sum, const auto& s) {return sum + s->Width(); });
+	_height = std::max(list, [](auto& a, auto& b) {	return a->Height() < b->Height(); })->Height();
+}
+
+
+std::string HorizontalShapes::ToPostScript() const
+{
+	// assume the "current point" in postscript file is the center
+	// of the first shape; after calling its ToPostScript, need
+	// to move right to center of next shape
+
+	std::string output{};
+
+	// move to left-center of first shape
+	output += std::to_string(-_shapeList.front()->Width() / 2) + " 0 rmoveto\n";
+
+	for (const auto& shape : _shapeList)
+	{
+		// move from left-center of previous shape to center of current shape
+		output += std::to_string(shape->Width() / 2) + " 0 rmoveto\n";
+
+		output += shape->ToPostScript();
+
+		// move from center of current shape to right-center of current shape
+		output += std::to_string(shape->Width() / 2) + " 0 rmoveto\n";
+		output += "\n";
+	}
+
+	return output;
+}
+
+std::string Scaled::ToPostScript() const
 {
 	std::string output{};
 
