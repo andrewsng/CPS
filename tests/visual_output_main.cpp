@@ -30,7 +30,7 @@ int main() {
 	auto tri = std::make_shared<Triangle>(107);
 	Write_Postscript_File(outdir + "tri.ps", tri);
 
-	auto sqr = std::make_shared<Square>(86);
+	auto sqr = Square(86);
 	Write_Postscript_File(outdir + "sqr.ps", sqr);
 
 	auto poly = Polygon(8, 102);

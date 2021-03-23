@@ -49,7 +49,7 @@ public:
 	SpacerShape(double width, double height);
 };
 
-class Square : public Shape {
+class SquareShape : public Shape {
 
 private:
 
@@ -60,7 +60,7 @@ public:
 	[[nodiscard]] double Width() const override { return _side_length; }
 	[[nodiscard]] double Height() const override { return _side_length; }
 	[[nodiscard]] std::string ToPostScript() const override;
-	Square(double side_length);
+	SquareShape(double side_length);
 };
 
 class Triangle : public Shape {
@@ -226,5 +226,7 @@ std::shared_ptr<RectangleShape> Rectangle(double width, double height);
 std::shared_ptr<PolygonShape> Polygon(int numSides, double sideLength);
 
 std::shared_ptr<SpacerShape> Spacer(double width, double height);
+
+std::shared_ptr<SquareShape> Square(double sideLength);
 
 #endif

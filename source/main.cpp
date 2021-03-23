@@ -13,8 +13,8 @@ int main() {
 	Circle c(72);
 	std::cout << "\n\n%Circle\n" << c.ToPostScript();
 	
-	Square s(15);
-	std::cout << "\n\n%Square\n" << s.ToPostScript();
+	auto s = Square(15);
+	std::cout << "\n\n%SquareShape\n" << s->ToPostScript();
 
 	Triangle t(1.5);
 	std::cout << "\n\n%Triangle\n" << t.ToPostScript();

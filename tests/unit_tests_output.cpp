@@ -38,9 +38,9 @@ TEST_CASE("PolygonShape output generates correct number of lines") {
 	REQUIRE(Number_Substring_Occurences(p_out, "closepath") == 1);
 }
 
-TEST_CASE("Square output generates correct number of lines") {
+TEST_CASE("SquareShape output generates correct number of lines") {
 
-	Square s(155.0);
+	SquareShape s(155.0);
 	std::string s_out = s.ToPostScript();
 
 	REQUIRE(Number_Substring_Occurences(s_out, "rlineto") == 3);

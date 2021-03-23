@@ -77,13 +77,13 @@ std::string PolygonShape::ToPostScript() const {
 	return output;
 }
 
-Square::Square(double side_length)
+SquareShape::SquareShape(double side_length)
 {
 	if (side_length <= 0) throw std::invalid_argument("Shape dimensions must be positive");
 	_side_length = side_length;
 }
 
-std::string Square::ToPostScript() const
+std::string SquareShape::ToPostScript() const
 {
 	std::string output{ "gsave\n" };
 
@@ -306,4 +306,9 @@ std::shared_ptr<PolygonShape> Polygon(int numSides, double sideLength)
 std::shared_ptr<SpacerShape> Spacer(double width, double height)
 {
 	return std::make_shared<SpacerShape>(width, height);
+}
+
+std::shared_ptr<SquareShape> Square(double sideLength)
+{
+	return std::make_shared<SquareShape>(sideLength);
 }

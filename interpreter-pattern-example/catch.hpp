@@ -7030,15 +7030,15 @@ namespace Catch {
 
                 sample jack = jackknife(estimator, first, last);
                 double jack_mean = mean(jack.begin(), jack.end());
-                double sum_squares, sum_cubes;
-                std::tie(sum_squares, sum_cubes) = std::accumulate(jack.begin(), jack.end(), std::make_pair(0., 0.), [jack_mean](std::pair<double, double> sqcb, double x) -> std::pair<double, double> {
+                double sum_SquareShapes, sum_cubes;
+                std::tie(sum_SquareShapes, sum_cubes) = std::accumulate(jack.begin(), jack.end(), std::make_pair(0., 0.), [jack_mean](std::pair<double, double> sqcb, double x) -> std::pair<double, double> {
                     auto d = jack_mean - x;
                     auto d2 = d * d;
                     auto d3 = d2 * d;
                     return { sqcb.first + d2, sqcb.second + d3 };
                 });
 
-                double accel = sum_cubes / (6 * std::pow(sum_squares, 1.5));
+                double accel = sum_cubes / (6 * std::pow(sum_SquareShapes, 1.5));
                 int n = static_cast<int>(resample.size());
                 double prob_n = std::count_if(resample.begin(), resample.end(), [point](double x) { return x < point; }) / (double)n;
                 // degenerate case with uniform samples
@@ -8439,7 +8439,7 @@ namespace Catch {
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 //
-// See https://github.com/philsquared/Clara for more details
+// See https://github.com/philSquareShaped/Clara for more details
 
 // Clara v1.1.5
 
@@ -8470,7 +8470,7 @@ namespace Catch {
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 //
-// This project is hosted at https://github.com/philsquared/textflowcpp
+// This project is hosted at https://github.com/philSquareShaped/textflowcpp
 
 
 #include <cassert>
@@ -10162,7 +10162,7 @@ namespace {
     // use POSIX/ ANSI console terminal codes
     // Thanks to Adam Strzelecki for original contribution
     // (http://github.com/nanoant)
-    // https://github.com/philsquared/Catch/pull/131
+    // https://github.com/philSquareShaped/Catch/pull/131
     class PosixColourImpl : public IColourImpl {
     public:
         void use( Colour::Code _colourCode ) override {
