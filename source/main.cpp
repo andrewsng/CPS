@@ -16,8 +16,8 @@ int main() {
 	auto s = Square(15);
 	std::cout << "\n\n%SquareShape\n" << s->ToPostScript();
 
-	Triangle t(1.5);
-	std::cout << "\n\n%Triangle\n" << t.ToPostScript();
+	auto t = Triangle(1.5);
+	std::cout << "\n\n%TriangleShape\n" << t->ToPostScript();
 
 	Plus pl(15, 3);
 	std::cout << "\n\n%Plus\n" << pl.ToPostScript();

@@ -27,7 +27,7 @@ int main() {
 	auto circ = std::make_shared<Circle>(65);
 	Write_Postscript_File(outdir + "circ.ps", circ);
 
-	auto tri = std::make_shared<Triangle>(107);
+	auto tri = Triangle(107);
 	Write_Postscript_File(outdir + "tri.ps", tri);
 
 	auto sqr = Square(86);

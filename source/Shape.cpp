@@ -97,13 +97,13 @@ std::string SquareShape::ToPostScript() const
 	return output;
 }
 
-Triangle::Triangle(double side_length)
+TriangleShape::TriangleShape(double side_length)
 {
 	if (side_length <= 0) throw std::invalid_argument("Shape dimensions must be positive");
 	_side_length = side_length;
 }
 
-std::string Triangle::ToPostScript() const
+std::string TriangleShape::ToPostScript() const
 {
 	std::string output{ "gsave\n" };
 
@@ -311,4 +311,9 @@ std::shared_ptr<SpacerShape> Spacer(double width, double height)
 std::shared_ptr<SquareShape> Square(double sideLength)
 {
 	return std::make_shared<SquareShape>(sideLength);
+}
+
+std::shared_ptr<TriangleShape> Triangle(double sideLength)
+{
+	return std::make_shared<TriangleShape>(sideLength);
 }

@@ -48,9 +48,9 @@ TEST_CASE("SquareShape output generates correct number of lines") {
 }
 
 
-TEST_CASE("Triangle output generates correct number of lines") {
+TEST_CASE("TriangleShape output generates correct number of lines") {
 
-	Triangle t(92);
+	TriangleShape t(92);
 	std::string t_out = t.ToPostScript();
 
 	REQUIRE(Number_Substring_Occurences(t_out, "rlineto") == 2);

@@ -17,9 +17,9 @@ TEST_CASE("Circle ctor requires correct input") {
 	REQUIRE_THROWS_AS([&]() { Circle c(-21.7); }(), std::invalid_argument);
 }
 
-TEST_CASE("Triangle ctor requires correct input") {
+TEST_CASE("TriangleShape ctor requires correct input") {
 
-	REQUIRE_THROWS_AS([&]() { Triangle t(-48.12); }(), std::invalid_argument);
+	REQUIRE_THROWS_AS([&]() { TriangleShape t(-48.12); }(), std::invalid_argument);
 }
 
 TEST_CASE("PolygonShape ctor requires correct input") {
