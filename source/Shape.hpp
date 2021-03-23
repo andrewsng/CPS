@@ -110,6 +110,20 @@ public:
 	Circle(double radius);
 };
 
+class Plus : public Shape {
+private:
+
+	double _crosslength;
+	double _crosswidth;
+
+public:
+
+	[[nodiscard]] double Height() const override { return _crosslength * 2 + _crosswidth * 2; }
+	[[nodiscard]] double Width() const override { return _crosslength * 2 + _crosswidth * 2; }
+	[[nodiscard]] std::string ToPostScript() const override;
+	Plus(double crosslength, double crosswidth);
+};
+
 class Layered : public Shape {
 
 private:

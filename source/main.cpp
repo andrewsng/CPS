@@ -19,6 +19,9 @@ int main() {
 	Triangle t(1.5);
 	std::cout << "\n\n%Triangle\n" << t.ToPostScript();
 
+	Plus pl(15, 3);
+	std::cout << "\n\n%Plus\n" << pl.ToPostScript();
+
 	Layered l{ std::make_shared<Rectangle>(54, 80),
 			   std::make_shared<Polygon>(5, 72),
 			   std::make_shared<Circle>(25) };

@@ -160,6 +160,33 @@ Spacer::Spacer(double width, double height)
 	_height = height;
 }
 
+Plus::Plus(double crosslength, double crosswidth)
+{
+	if (crosslength <= 0) throw std::invalid_argument("Shape dimensions must be positive");
+	if (crosswidth <= 0) throw std::invalid_argument("Shape dimensions must be positive");
+	_crosslength = crosslength;
+	_crosswidth = crosswidth;
+}
+
+std::string Plus::ToPostScript() const {
+	std::string output{ "gsave\n" };
+
+	output += std::to_string(_crosswidth / 2) + " " + std::to_string(_crosswidth / 2);
+
+	for (int i = 0; i < 4; i++)
+	{
+		output += std::to_string(_crosslength) + " 0 rlineto\n";
+		output += " 0 " + std::to_string(-_crosswidth) + " rlineto\n";
+		output += std::to_string(_crosslength) + " 0 rlineto\n";
+		output += " 0 " + std::to_string(_crosswidth) + " rmoveto\n";
+		output += "90 rotate\n";
+	}
+
+	output += "grestore\n";
+
+	return output;
+}
+
 
 VerticalShapes::VerticalShapes(std::initializer_list<std::shared_ptr<Shape>> list) : _shapeList(list)
 {
