@@ -135,3 +135,11 @@ TEST_CASE("SpacerShape output generates correct number of lines") {
 	REQUIRE(Number_Substring_Occurences(s_out, "rlineto") == 0);
 	REQUIRE(Number_Substring_Occurences(s_out, "closepath") == 0);
 }
+
+TEST_CASE("SpacerShape width and height") {
+	
+	SpacerShape s(39, 64);
+
+	REQUIRE(s.Width() == Approx(39.0));
+	REQUIRE(s.Height() == Approx(64.0));
+}
