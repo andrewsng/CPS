@@ -24,10 +24,10 @@ int main() {
 
 	auto row_two = Horizontal({ tri_p,spcr,sqr_p,spcr,pnt,spcr,hex_p,spcr, hept });
 
-	auto tri_layer = Layered({ tri, Triangle(30), Triangle(15) });
-	auto sqr_layer = Layered({ sqr, Square(30), Square(15) });
-	auto rct_layer = Layered({ rct, Rectangle(110,30), Rectangle(55,15) });
-	auto crc_layer = Layered({ crc, Circle(18), Circle(9) });
+	auto tri_layer = Layered({ tri, Scaled(tri, 0.75, 0.75), Scaled(tri, 0.5, 0.5), Scaled(tri, 0.25, 0.25) });
+	auto sqr_layer = Layered({ sqr, Scaled(sqr, 0.75, 0.75), Scaled(sqr, 0.5, 0.5), Scaled(sqr, 0.25, 0.25) });
+	auto rct_layer = Layered({ rct, Scaled(rct, 0.75, 0.75), Scaled(rct, 0.5, 0.5), Scaled(rct, 0.25, 0.25) });
+	auto crc_layer = Layered({ crc, Scaled(crc, 0.75, 0.75), Scaled(crc, 0.5, 0.5), Scaled(crc, 0.25, 0.25) });
 
 	auto row_three = Horizontal({ tri_layer,spcr,sqr_layer,spcr,rct_layer,spcr,crc_layer });
 
@@ -59,6 +59,8 @@ int main() {
 	auto div = Divide(150);
 	auto sub = Rectangle(150, 37.5);
 
+	// create postscript file with the calculator emoji
+	
 	auto add_sub = Horizontal({ sub, Spacer(60,60), pls });
 	auto mlt_div = Horizontal({ mlt, Spacer(60,60), div });
 	auto all_symbols = Vertical({ add_sub, Spacer(60,60), mlt_div });
