@@ -201,3 +201,10 @@ TEST_CASE("RotatedShape width and height") {
 	REQUIRE(r3->Width() == Approx(4.75));
 	REQUIRE(r3->Height() == Approx(2.5));
 }
+
+TEST_CASE("LayeredShape width and height") {
+
+	auto l = Layered({Rectangle(4.8, 5.2), Circle(2.5)});
+	REQUIRE(l->Width() == Approx(5.0));
+	REQUIRE(l->Height() == Approx(5.2));
+}
