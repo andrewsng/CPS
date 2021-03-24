@@ -1,6 +1,6 @@
 #include <string>
 #include "catch.hpp"
-#include "Shape.hpp"
+#include "CPS.hpp"
 
 int Number_Substring_Occurences(const std::string& input, const std::string& sub)
 {
@@ -175,4 +175,15 @@ TEST_CASE("SierpinskiShape width and height") {
 	SierpinskiShape s2(1.0, 6);
 	REQUIRE(s2.Width() == Approx(1.0));
 	REQUIRE(s2.Height() == Approx(sqrt(3.0)/2.0));
+}
+
+TEST_CASE("ScaledShape width and height") {
+
+	auto r = Rectangle(2.5, 4.75);
+	auto s1 = Scaled(r, 4.0, 2.0);
+	REQUIRE(s1->Width() == Approx(10.0));
+	REQUIRE(s1->Height() == Approx(9.5));
+	auto s2 = Scaled(r, 1.0, 1.0);
+	REQUIRE(s2->Width() == Approx(2.5));
+	REQUIRE(s2->Height() == Approx(4.75));
 }
