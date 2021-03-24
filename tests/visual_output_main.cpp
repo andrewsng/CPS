@@ -40,4 +40,7 @@ int main() {
 
 	auto pls = Plus(45, 45);
 	Write_Postscript_File(outdir + "plus.ps", pls, x, y);
+
+	auto frac = Sierpinski(400, 10);
+	Write_Postscript_File(outdir + "frac.ps", frac, x, y);
 }

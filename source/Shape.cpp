@@ -375,6 +375,11 @@ std::shared_ptr<PlusShape> Plus(double crossLength, double crossWidth)
 	return std::make_shared<PlusShape>(crossLength, crossWidth);
 }
 
+std::shared_ptr<SierpinskiShape> Sierpinski(double sideLength, int maxDepth)
+{
+	return std::make_shared<SierpinskiShape>(sideLength, maxDepth);
+}
+
 std::shared_ptr<ScaledShape> Scaled(std::shared_ptr<Shape> shape, double fx, double fy)
 {
 	return std::make_shared<ScaledShape>(shape, fx, fy);

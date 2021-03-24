@@ -251,6 +251,8 @@ std::shared_ptr<CircleShape> Circle(double radius);
 
 std::shared_ptr<PlusShape> Plus(double crossLength, double crossWidth);
 
+std::shared_ptr<SierpinskiShape> Sierpinski(double sideLength, int maxDepth);
+
 std::shared_ptr<ScaledShape> Scaled(std::shared_ptr<Shape> shape, double fx, double fy);
 
 std::shared_ptr<RotatedShape> Rotated(std::shared_ptr<Shape> shape, Angle rotationAngle);
