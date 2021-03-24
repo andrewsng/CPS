@@ -250,23 +250,17 @@ VerticalShapes::VerticalShapes(std::initializer_list<std::shared_ptr<Shape>> lis
 
 std::string VerticalShapes::ToPostScript() const
 {
-	// assume the "current point" in postscript file is the center
-	// of the first shape; after calling its ToPostScript, need
-	// to move up to center of next shape
 
 	std::string output{"gsave\n"};
 
-	// move to bottom-center of first shape
-	output += "0 " + std::to_string(-_shapeList.front()->Height() / 2) + " rmoveto\n";
+	output += "0 " + std::to_string(-Height() / 2) + " rmoveto\n";
 
 	for (const auto& shape : _shapeList)
 	{
-		// move from top-center of previous shape to center of current shape
 		output += "0 " + std::to_string(shape->Height() / 2) + " rmoveto\n";
 
 		output += shape->ToPostScript();
 		
-		// move from center of current shape to top-center of current shape
 		output += "0 " + std::to_string(shape->Height() / 2) + " rmoveto\n";
 		output += "\n";
 	}
@@ -284,23 +278,17 @@ HorizontalShapes::HorizontalShapes(std::initializer_list<std::shared_ptr<Shape>>
 
 std::string HorizontalShapes::ToPostScript() const
 {
-	// assume the "current point" in postscript file is the center
-	// of the first shape; after calling its ToPostScript, need
-	// to move right to center of next shape
 
 	std::string output{"gsave\n"};
 
-	// move to left-center of first shape
-	output += std::to_string(-_shapeList.front()->Width() / 2) + " 0 rmoveto\n";
+	output += std::to_string(-Width() / 2) + " 0 rmoveto\n";
 
 	for (const auto& shape : _shapeList)
 	{
-		// move from left-center of previous shape to center of current shape
 		output += std::to_string(shape->Width() / 2) + " 0 rmoveto\n";
 
 		output += shape->ToPostScript();
 
-		// move from center of current shape to right-center of current shape
 		output += std::to_string(shape->Width() / 2) + " 0 rmoveto\n";
 		output += "\n";
 	}
