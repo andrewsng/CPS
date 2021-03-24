@@ -1,52 +1,18 @@
-#include <iostream>
-#include <memory>
 #include "CPS.hpp"
 
 int main() {
 
-	auto r = Rectangle(17.5, 32);
-	std::cout << "\n\n%RectangleShape\n" << r->ToPostScript();
+	auto origHex = Polygon(6, 72);
+	const double x = origHex->Height();
+	const double y = origHex->Height()*sqrt(3);
+	auto hex = Rotated(origHex, Angle::deg90);
+	auto hexLine = Horizontal({hex, hex, hex, hex, hex, hex });
+	auto twoLines = Layered({ hexLine, Vertical({Spacer(10, 1*y), Horizontal({Spacer(x, 10), hexLine })}),
+							  Vertical({Spacer(10, 2*y), hexLine}), Vertical({Spacer(10, 3*y), Horizontal({Spacer(x, 10), hexLine })}),
+							  Vertical({Spacer(10, 4*y), hexLine}), Vertical({Spacer(10, 5*y), Horizontal({Spacer(x, 10), hexLine })}),
+							  Vertical({Spacer(10, 6*y), hexLine}), Vertical({Spacer(10, 7*y), Horizontal({Spacer(x, 10), hexLine })}),
+							  Vertical({Spacer(10, 8*y), hexLine}), Vertical({Spacer(10, 9*y), Horizontal({Spacer(x, 10), hexLine })}) });
+	Write_Postscript_File("../../../visual_test_output/hex.ps", twoLines, 306, 396);
 
-	auto p = Polygon(7, 55);
-	std::cout << "\n\n%PolygonShape\n" << p->ToPostScript();
-	
-	auto c = Circle(72);
-	std::cout << "\n\n%CircleShape\n" << c->ToPostScript();
-	
-	auto s = Square(15);
-	std::cout << "\n\n%SquareShape\n" << s->ToPostScript();
-
-	auto t = Triangle(1.5);
-	std::cout << "\n\n%TriangleShape\n" << t->ToPostScript();
-
-	auto pl = Plus(50, 50);
-	std::cout << "\n\n%PlusShape\n" << pl->ToPostScript();
-
-	auto l = Layered({ Rectangle(54, 80),
-			           Polygon(5, 72),
-			           Circle(25) });
-	std::cout << "\n\n%LayeredShapes Shape\n" << l->ToPostScript();
-
-	auto v = Vertical({ Rectangle(54, 80),
-			            Polygon(5, 72),
-			            Circle(25) });
-	std::cout << "\n\n%Vertical Shape\n" << v->ToPostScript();
-
-	auto sp = Scaled(Polygon(5, 72), 2.75, 2);
-	std::cout << "\n\n%ScaledShape Shape\n" << sp->ToPostScript();
-	
-	auto shape = Horizontal({Polygon(5, 20),
-	                         Spacer(15, 15),
-							 Circle(30),
-	                         Spacer(15, 15),
-							 Rectangle(25, 10)});
-	std::cout << "\n\n%Horizontal Shape\n" << shape->ToPostScript();
-	
-	auto rot = Layered({Rotated(shape, Angle::deg90),
-	                    Rotated(shape, Angle::deg180),
-						Rotated(shape, Angle::deg270)});
-	std::cout << "\n\n%RotatedShape Shapes\n" << rot->ToPostScript();
-
-	std::cin.get();
 	return 0;
 }
