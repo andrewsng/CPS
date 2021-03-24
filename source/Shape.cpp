@@ -233,7 +233,7 @@ std::string PlusShape::ToPostScript() const {
 		output += "90 rotate\n";
 	}
 
-	output += "stroke\ngrestore\n";
+	output += "closepath\nstroke\ngrestore\n";
 
 	return output;
 }
