@@ -220,10 +220,12 @@ std::string PlusShape::ToPostScript() const {
 	std::string output{ "gsave\n" };
 
 	output += std::to_string(_crosswidth / 2) + " ";
-	output += std::to_string(_crosswidth / 2) + " rmoveto\n";
+	output += std::to_string(-_crosswidth / 2) + " rmoveto\n";
 
 	for (int i = 0; i < 4; i++)
 	{
+		output += "0 ";
+		output += std::to_string(_crosswidth) + " rmoveto\n";
 		output += std::to_string(_crosslength) + " 0 rlineto\n";
 		output += " 0 " + std::to_string(-_crosswidth) + " rlineto\n";
 		output += std::to_string(-_crosslength) + " 0 rlineto\n";
@@ -231,6 +233,7 @@ std::string PlusShape::ToPostScript() const {
 		output += "90 rotate\n";
 	}
 
+	output += "closepath\nstroke\n";
 	output += "grestore\n";
 
 	return output;
