@@ -187,3 +187,17 @@ TEST_CASE("ScaledShape width and height") {
 	REQUIRE(s2->Width() == Approx(2.5));
 	REQUIRE(s2->Height() == Approx(4.75));
 }
+
+TEST_CASE("RotatedShape width and height") {
+
+	auto r = Rectangle(2.5, 4.75);
+	auto r1 = Rotated(r, Angle::deg90);
+	REQUIRE(r1->Width() == Approx(4.75));
+	REQUIRE(r1->Height() == Approx(2.5));
+	auto r2 = Rotated(r, Angle::deg180);
+	REQUIRE(r2->Width() == Approx(2.5));
+	REQUIRE(r2->Height() == Approx(4.75));
+	auto r3 = Rotated(r, Angle::deg270);
+	REQUIRE(r3->Width() == Approx(4.75));
+	REQUIRE(r3->Height() == Approx(2.5));
+}
