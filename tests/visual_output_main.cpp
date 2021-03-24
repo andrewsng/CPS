@@ -47,6 +47,16 @@ int main() {
 	auto div = Divide(45);
 	Write_Postscript_File(outdir + "div.ps", div, x, y);
 
+	auto sub = Rectangle(45, 11.25);
+
+	auto add_sub = Horizontal({ sub, Spacer(22.5,45), Scaled(pls,0.333,0.333) });
+	auto mlt_div = Horizontal({ mlt, Spacer(22.5,45), div });
+	auto all_symbols = Vertical({ add_sub, Spacer(45,22.5), mlt_div });
+	auto outer_box = Square(135);
+	auto calc_emoji = Layered({ outer_box, all_symbols });
+	Write_Postscript_File(outdir + "calc.ps", calc_emoji, x, y);
+
+
 	auto rot = Horizontal({ tri, Rotated(tri, Angle::deg90), spcr,
 		Rotated(tri, Angle::deg180), spcr,
 		Rotated(tri, Angle::deg270) });
