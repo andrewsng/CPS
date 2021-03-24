@@ -178,7 +178,7 @@ std::string PlusShape::ToPostScript() const {
 	{
 		output += std::to_string(_crosslength) + " 0 rlineto\n";
 		output += " 0 " + std::to_string(-_crosswidth) + " rlineto\n";
-		output += std::to_string(_crosslength) + " 0 rlineto\n";
+		output += std::to_string(-_crosslength) + " 0 rlineto\n";
 		output += " 0 " + std::to_string(_crosswidth) + " rmoveto\n";
 		output += "90 rotate\n";
 	}
