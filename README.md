@@ -29,8 +29,8 @@ Visuals Directory
 Unit Tests
 
   * Testing of constructors and properties using Catch2
-  * Primitive testing of ToPostScript() output strings (see testing README for details)
+  * Primitive testing of ToPostScript() output strings (see testing [README](https://github.com/uaf372/CPS/tree/main/tests) for details)
 
 Visual Tests
 
-  * Regularly regenerated and tested .ps output form visual_output_main.cpp (see testing README for details)
+  * Regularly regenerated and tested .ps output form visual_output_main.cpp (see testing [README](https://github.com/uaf372/CPS/tree/main/tests) for details)
