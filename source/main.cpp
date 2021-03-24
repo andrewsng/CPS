@@ -5,8 +5,8 @@ int main() {
 
 	std::string visual_path = "../../../visuals/";
 
-	// create postscript file with two rows illustrating all basic shapes
-	// note : one row consists of polygons only
+	// create postscript file with three rows illustrating all basic shapes
+	// note : middle row consists of polygons only
 
 	auto tri = Triangle(45);
 	auto sqr = Square(45);
