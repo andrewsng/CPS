@@ -137,10 +137,11 @@ std::string CircleShape::ToPostScript() const {
 }
 
 SierpinskiShape::SierpinskiShape(double side_length, int max_depth)
-	:_max_depth(max_depth)
 {
 	if (side_length <= 0) throw std::invalid_argument("Shape dimensions must be positive");
-	_side_length = side_length;
+		_side_length = side_length;
+	if (max_depth < 0) throw std::invalid_argument("Max recursion depth must be positive");
+		_max_depth = max_depth;
 }
 
 std::string SierpinskiShape::ToPostScriptRecurse(int depth) const

@@ -33,3 +33,14 @@ TEST_CASE("SpacerShape ctor requires correct input") {
 	REQUIRE_THROWS_AS([&]() { SpacerShape s(-151.2, 132.3); }(), std::invalid_argument);
 	REQUIRE_THROWS_AS([&]() { SpacerShape s(151.2, -132.3); }(), std::invalid_argument);
 }
+
+TEST_CASE("PlusShape ctor requires correct input") {
+	REQUIRE_THROWS_AS([&]() { PlusShape f(-40, 40); }(), std::invalid_argument);
+	REQUIRE_THROWS_AS([&]() { PlusShape f(40, -40); }(), std::invalid_argument);
+	REQUIRE_THROWS_AS([&]() { PlusShape f(-40, -40); }(), std::invalid_argument);
+}
+
+TEST_CASE("SierpinskiShape ctor requires correct input") {
+	REQUIRE_THROWS_AS([&]() { SierpinskiShape f(-39.52, 3); }(), std::invalid_argument);
+	REQUIRE_THROWS_AS([&]() { SierpinskiShape f(39.52, -3); }(), std::invalid_argument);
+}
