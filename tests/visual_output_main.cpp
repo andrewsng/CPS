@@ -41,6 +41,11 @@ int main() {
 	auto pls = Plus(45, 45);
 	Write_Postscript_File(outdir + "plus.ps", pls, x, y);
 
+	auto rot = Horizontal({ tri, Rotated(tri, Angle::deg90), spcr,
+		Rotated(tri, Angle::deg180), spcr,
+		Rotated(tri, Angle::deg270) });
+	Write_Postscript_File(outdir + "rotated.ps", rot, x, y);
+
 	auto frac = Sierpinski(400, 10);
 	Write_Postscript_File(outdir + "frac.ps", frac, x, y);
 }
