@@ -143,3 +143,26 @@ TEST_CASE("SpacerShape width and height") {
 	REQUIRE(s.Width() == Approx(39.0));
 	REQUIRE(s.Height() == Approx(64.0));
 }
+
+TEST_CASE("PlusShape output generates correct number of lines") {
+
+	PlusShape p(155, 223);
+	std::string p_out = p.ToPostScript();
+
+	REQUIRE(Number_Substring_Occurences(p_out, "rlineto") == 12);
+	REQUIRE(Number_Substring_Occurences(p_out, "closepath") == 1);
+	REQUIRE(Number_Substring_Occurences(p_out, "rotate") == 4);
+}
+
+TEST_CASE("PlusShape width and height") {
+	
+	PlusShape p1(50, 50);
+	REQUIRE(p1.Width() == Approx(150.0));
+	REQUIRE(p1.Height() == Approx(150.0));
+	PlusShape p2(20, 50);
+	REQUIRE(p2.Width() == Approx(90.0));
+	REQUIRE(p2.Height() == Approx(90.0));
+	PlusShape p3(50, 20);
+	REQUIRE(p3.Width() == Approx(120.0));
+	REQUIRE(p3.Height() == Approx(120.0));
+}
