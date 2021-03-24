@@ -120,6 +120,13 @@ TEST_CASE("CircleShape output generates correct number of lines") {
 	REQUIRE(Number_Substring_Occurences(c_out, "closepath") == 1);
 }
 
+TEST_CASE("CircleShape width and height") {
+
+	CircleShape c(118.49);
+	REQUIRE(c.Width() == Approx(236.98));
+	REQUIRE(c.Height() == Approx(236.98));
+}
+
 TEST_CASE("SpacerShape output generates correct number of lines") {
 
 	SpacerShape s(155, 223);
