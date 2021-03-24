@@ -1,18 +1,16 @@
 # CPS
 A C++ to Postscript conversion project.
 
-Development tasks and progress can be seen on the [Project Tasks](https://github.com/uaf372/CPS/projects/1) Kanban board.
-
 # Shape Classes
 
 Shape.hpp contains
-	A virtual class base which contains a height weight and toPostScript funtions 
-	Multiple shape classes with constructors and toPostScript funtions based off of the main vitual shape class
+	A virtual class base which contains a height weight and toPostScript functions 
+	Multiple shape classes with constructors and toPostScript functions based off of the main virtual shape class
 	Multiple compound shape classes that reference the shape classes using pointers 
-	Shareed pointers to each of the classes
+	Shared pointers to each of the classes
 
 Shape.cpp contains
-	toPostScript funtions and constructor funcitons for the different shape and compound shapes
+	toPostScript functions and constructor functions for the different shape and compound shapes
 
 # Tests
 
