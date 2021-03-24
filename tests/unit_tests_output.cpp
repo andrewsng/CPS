@@ -166,3 +166,13 @@ TEST_CASE("PlusShape width and height") {
 	REQUIRE(p3.Width() == Approx(120.0));
 	REQUIRE(p3.Height() == Approx(120.0));
 }
+
+TEST_CASE("SierpinskiShape width and height") {
+
+	SierpinskiShape s1(364.68, 6);
+	REQUIRE(s1.Width() == Approx(364.68));
+	REQUIRE(s1.Height() == Approx(315.8221443));
+	SierpinskiShape s2(1.0, 6);
+	REQUIRE(s2.Width() == Approx(1.0));
+	REQUIRE(s2.Height() == Approx(sqrt(3.0)/2.0));
+}
