@@ -101,6 +101,16 @@ TEST_CASE("TriangleShape output generates correct number of lines") {
 	REQUIRE(Number_Substring_Occurences(t_out, "closepath") == 1);
 }
 
+TEST_CASE("TriangleShape width and height") {
+
+	TriangleShape t1(235.63);
+	REQUIRE(t1.Width() == Approx(235.63));
+	REQUIRE(t1.Height() == Approx(204.0615659));
+	TriangleShape t2(1.0);
+	REQUIRE(t2.Width() == Approx(1.0));
+	REQUIRE(t2.Height() == Approx(sqrt(3.0)/2.0));
+}
+
 TEST_CASE("CircleShape output generates correct number of lines") {
 
 	CircleShape c(57);
