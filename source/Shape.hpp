@@ -124,6 +124,24 @@ public:
 	PlusShape(double crosslength, double crosswidth);
 };
 
+class SierpinskiShape : public Shape {
+
+private:
+
+	double _side_length;
+	int _max_depth;
+	
+	std::string SierpinskiShape::ToPostScriptRecurse(int depth) const;
+	
+public:
+
+	[[nodiscard]] double Width() const override { return _side_length; }
+	[[nodiscard]] double Height() const override { return _side_length / 2 * sqrt(3); }
+	[[nodiscard]] std::string ToPostScript() const override;
+	SierpinskiShape(double side_length, int max_depth);
+
+};
+
 class LayeredShapes : public Shape {
 
 private:

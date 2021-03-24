@@ -32,7 +32,7 @@ std::string RectangleShape::ToPostScript() const {
 
 PolygonShape::PolygonShape(int num_sides, double side_length)
 {
-	if (num_sides <= 3) throw std::invalid_argument("Regular PolygonShape cannot have fewer than 3 sides");
+	if (num_sides < 3) throw std::invalid_argument("Regular PolygonShape cannot have fewer than 3 sides");
 	if (side_length <= 0) throw std::invalid_argument("Shape dimensions must be positive");
 
 	_num_sides = num_sides;
@@ -132,6 +132,53 @@ std::string CircleShape::ToPostScript() const {
 	output += "currentpoint /y exch def /x exch def\nnewpath\n";
 	output += "x y " + std::to_string(_radius) + " 0 360 arc\n";
 	output += "closepath\nstroke\ngrestore\n";
+
+	return output;
+}
+
+SierpinskiShape::SierpinskiShape(double side_length, int max_depth)
+	:_max_depth(max_depth)
+{
+	if (side_length <= 0) throw std::invalid_argument("Shape dimensions must be positive");
+	_side_length = side_length;
+}
+
+std::string SierpinskiShape::ToPostScriptRecurse(int depth) const
+{
+	std::string output{"gsave\n"};
+	
+	std::string smallerOutput;
+	if (depth >= _max_depth) {
+		auto smaller = std::make_shared<TriangleShape>(Width() / 2);
+		smallerOutput = smaller->ToPostScript();
+	}
+	else {
+		auto smaller = std::make_shared<SierpinskiShape>(Width() / 2, _max_depth);
+		smallerOutput = smaller->ToPostScriptRecurse(depth + 1);
+	}
+
+	output += std::to_string(-Width() / 4) + " " + std::to_string(-Height() / 4) + " rmoveto\n";
+	output += smallerOutput;
+	output += std::to_string(Width() / 2) + " 0 rmoveto\n";
+	output += smallerOutput;
+	output += std::to_string(-Width() / 4) + " " + std::to_string(Height() / 2) + " rmoveto\n";
+	output += smallerOutput;
+
+	output += "grestore\n";
+	return output;
+}
+
+std::string SierpinskiShape::ToPostScript() const
+{
+	std::string output{};
+	const double fractalLineWidth = 0.1;
+	
+	output += "currentlinewidth\n";
+	output += std::to_string(fractalLineWidth) + " setlinewidth\n";
+	
+	output += ToPostScriptRecurse(0);
+
+	output += "setlinewidth\n";
 
 	return output;
 }

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <memory>
-#include "Shape.hpp"
+#include "CPS.hpp"
 
 int main() {
 
@@ -46,6 +46,10 @@ int main() {
 	                    Rotated(shape, Angle::deg180),
 						Rotated(shape, Angle::deg270)});
 	std::cout << "\n\n%RotatedShape Shapes\n" << rot->ToPostScript();
+	
+	auto stri = std::make_shared<SierpinskiShape>(500, 10);
+	
+	Write_Postscript_File("../../../visual_test_output/stri.ps", stri, 288, 500);
 
 	std::cin.get();
 	return 0;
