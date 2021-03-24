@@ -268,6 +268,28 @@ std::string MultiplyShape::ToPostScript() const
 	return output;
 }
 
+
+std::string DivideShape::ToPostScript() const
+{
+	std::string output{ "gsave\n" };
+
+	RectangleShape r(_width, 0.25 * _width);
+	output += r.ToPostScript();
+
+	// move up and add top circle
+	CircleShape c(0.125 * _width);
+	output += "0 " + std::to_string(0.375 * _width) + " rmoveto\n";
+	output += c.ToPostScript();
+
+	// move down and add bottom circle
+	output += "0 " + std::to_string(-0.75 * _width) + " rmoveto\n";
+	output += c.ToPostScript();
+
+	output += "grestore\n";
+
+	return output;
+}
+
 VerticalShapes::VerticalShapes(std::initializer_list<std::shared_ptr<Shape>> list) : _shapeList(list)
 {
 	_width = std::max(list, [](auto& a, auto& b) {	return a->Width() < b->Width();	})->Width();
@@ -428,4 +450,9 @@ std::shared_ptr<HorizontalShapes> Horizontal(std::initializer_list<std::shared_p
 std::shared_ptr<MultiplyShape> Multiply(double width)
 {
 	return std::make_shared<MultiplyShape>(width);
+}
+
+std::shared_ptr<DivideShape> Divide(double width)
+{
+	return std::make_shared<DivideShape>(width);
 }

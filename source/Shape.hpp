@@ -140,6 +140,20 @@ public:
 	MultiplyShape(double width) : _width(width), _height(width) {}
 };
 
+class DivideShape : public Shape {
+private:
+
+	double _width;
+	double _height;
+
+public:
+
+	[[nodiscard]] double Width() const override { return _width; }
+	[[nodiscard]] double Height() const override { return _height; }
+	[[nodiscard]] std::string ToPostScript() const override;
+	DivideShape(double width) : _width(width), _height(width) {}
+};
+
 class SierpinskiShape : public Shape {
 
 private:
@@ -268,6 +282,8 @@ std::shared_ptr<CircleShape> Circle(double radius);
 std::shared_ptr<PlusShape> Plus(double crossLength, double crossWidth);
 
 std::shared_ptr<MultiplyShape> Multiply(double width);
+
+std::shared_ptr<DivideShape> Divide(double width);
 
 std::shared_ptr<SierpinskiShape> Sierpinski(double sideLength, int maxDepth);
 
