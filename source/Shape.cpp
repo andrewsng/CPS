@@ -214,6 +214,8 @@ PlusShape::PlusShape(double crosslength, double crosswidth)
 	if (crosswidth <= 0) throw std::invalid_argument("Shape dimensions must be positive");
 	_crosslength = crosslength;
 	_crosswidth = crosswidth;
+	_width = _crosslength * 2 + _crosswidth;
+	_height = _width;
 }
 
 std::string PlusShape::ToPostScript() const {

@@ -113,13 +113,15 @@ public:
 class PlusShape : public Shape {
 private:
 
+	double _width;
+	double _height;
 	double _crosslength;
 	double _crosswidth;
 
 public:
 
-	[[nodiscard]] double Height() const override { return _crosslength * 2 + _crosswidth * 2; }
-	[[nodiscard]] double Width() const override { return _crosslength * 2 + _crosswidth * 2; }
+	[[nodiscard]] double Width() const override { return _width; }
+	[[nodiscard]] double Height() const override { return _height; }
 	[[nodiscard]] std::string ToPostScript() const override;
 	PlusShape(double crosslength, double crosswidth);
 };
