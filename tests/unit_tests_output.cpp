@@ -217,3 +217,12 @@ TEST_CASE("VerticalShape width and height") {
 	REQUIRE(v->Width() == Approx(18.2));
 	REQUIRE(v->Height() == Approx(23.39));
 }
+
+TEST_CASE("HorizontalShape width and height") {
+
+	auto h = Horizontal({Rectangle(6.4, 2.85),
+	                     Spacer(18.2, 3.64),
+					     Circle(8.45)});
+	REQUIRE(h->Width() == Approx(41.5));
+	REQUIRE(h->Height() == Approx(16.9));
+}
