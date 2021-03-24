@@ -159,7 +159,6 @@ public:
 
 };
 
-
 class VerticalShapes : public Shape {
 
 private:
@@ -176,7 +175,6 @@ public:
 	VerticalShapes(std::initializer_list<std::shared_ptr<Shape>> list);
 
 };
-
 
 class HorizontalShapes : public Shape {
 
