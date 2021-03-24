@@ -37,4 +37,7 @@ int main() {
 
 	auto scl = Scaled(poly, 1.25, 1.75);
 	Write_Postscript_File(outdir + "scale.ps", Layered({ poly, scl }), x, y);
+
+	auto pls = Plus(45, 45);
+	Write_Postscript_File(outdir + "plus.ps", pls, x, y);
 }
