@@ -41,6 +41,12 @@ int main() {
 	auto pls = Plus(45, 45);
 	Write_Postscript_File(outdir + "plus.ps", pls, x, y);
 
+	auto mlt = Multiply(45);
+	Write_Postscript_File(outdir + "mult.ps", mlt, x, y);
+
+	auto div = Divide(45);
+	Write_Postscript_File(outdir + "div.ps", div, x, y);
+
 	auto rot = Horizontal({ tri, Rotated(tri, Angle::deg90), spcr,
 		Rotated(tri, Angle::deg180), spcr,
 		Rotated(tri, Angle::deg270) });
