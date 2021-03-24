@@ -4,4 +4,4 @@ set (CMAKE_CXX_STANDARD 17)
 
 project ("cps")
 
-add_executable (cps-output  main.cpp Shape.hpp Shape.cpp)
+add_executable (cps-output main.cpp Shape.hpp Shape.cpp CPS.hpp CPS.cpp)
