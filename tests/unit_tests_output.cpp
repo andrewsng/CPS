@@ -208,3 +208,12 @@ TEST_CASE("LayeredShape width and height") {
 	REQUIRE(l->Width() == Approx(5.0));
 	REQUIRE(l->Height() == Approx(5.2));
 }
+
+TEST_CASE("VerticalShape width and height") {
+
+	auto v = Vertical({Rectangle(6.4, 2.85),
+	                  Spacer(18.2, 3.64),
+					  Circle(8.45)});
+	REQUIRE(v->Width() == Approx(18.2));
+	REQUIRE(v->Height() == Approx(23.39));
+}
