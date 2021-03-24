@@ -27,6 +27,13 @@ TEST_CASE("RectangleShape output generates correct number of lines") {
 	REQUIRE(Number_Substring_Occurences(r_out, "closepath") == 1);
 }
 
+TEST_CASE("RectangleShape width and height") {
+	
+	RectangleShape r(47, 52);
+
+	REQUIRE(r.Width() == Approx(47.0));
+	REQUIRE(r.Height() == Approx(52.0));
+}
 
 TEST_CASE("PolygonShape output generates correct number of lines") {
 
@@ -38,6 +45,36 @@ TEST_CASE("PolygonShape output generates correct number of lines") {
 	REQUIRE(Number_Substring_Occurences(p_out, "closepath") == 1);
 }
 
+TEST_CASE("PolygonShape width and height") {
+
+	const double e = 31.6;
+
+	SECTION("n is odd") {
+		const int n = 7;
+		PolygonShape p(n, e);
+		const double w = (e*sin(PI*(n-1)/(2*n)))/(sin(PI/n));
+		const double h = e*(1+cos(PI/n))/(2*sin(PI/n));
+		REQUIRE(p.Width() == Approx(w));
+		REQUIRE(p.Height() == Approx(h));
+	}
+	SECTION("n is divisible by 4") {
+		const int n = 8;
+		PolygonShape p(n, e);
+		const double w = e*cos(PI/n)/(sin(PI/n));
+		const double h = w;
+		REQUIRE(p.Width() == Approx(w));
+		REQUIRE(p.Height() == Approx(h));
+	}
+	SECTION("n is divisible by 2, but not by 4") {
+		const int n = 6;
+		PolygonShape p(n, e);
+		const double w = e/(sin(PI/n));
+		const double h = e*cos(PI/n)/(sin(PI/n));
+		REQUIRE(p.Width() == Approx(w));
+		REQUIRE(p.Height() == Approx(h));
+	}
+}
+
 TEST_CASE("SquareShape output generates correct number of lines") {
 
 	SquareShape s(155.0);
@@ -46,7 +83,6 @@ TEST_CASE("SquareShape output generates correct number of lines") {
 	REQUIRE(Number_Substring_Occurences(s_out, "rlineto") == 3);
 	REQUIRE(Number_Substring_Occurences(s_out, "closepath") == 1);
 }
-
 
 TEST_CASE("TriangleShape output generates correct number of lines") {
 
@@ -57,7 +93,6 @@ TEST_CASE("TriangleShape output generates correct number of lines") {
 	REQUIRE(Number_Substring_Occurences(t_out, "closepath") == 1);
 }
 
-
 TEST_CASE("CircleShape output generates correct number of lines") {
 
 	CircleShape c(57);
@@ -66,7 +101,6 @@ TEST_CASE("CircleShape output generates correct number of lines") {
 	REQUIRE(Number_Substring_Occurences(c_out, "arc") == 1);
 	REQUIRE(Number_Substring_Occurences(c_out, "closepath") == 1);
 }
-
 
 TEST_CASE("SpacerShape output generates correct number of lines") {
 
