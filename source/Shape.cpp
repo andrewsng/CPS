@@ -238,6 +238,35 @@ std::string PlusShape::ToPostScript() const {
 	return output;
 }
 
+std::string MultiplyShape::ToPostScript() const
+{
+	std::string half_width = std::to_string(_width / 2);
+	std::string third_width = std::to_string(_width / 3);
+	std::string sixth_width = std::to_string(_width / 6);
+
+	std::string output{ "gsave\n" };
+
+	// move to bottom left corner
+	output += "-" + half_width + " -" + half_width + " rmoveto\n";
+		
+	output += third_width + " 0 rlineto\n"; // begin drawing counter-clockwise
+	output += sixth_width + " " + third_width + " rlineto\n";
+	output += sixth_width + " -" + third_width + " rlineto\n";
+	output += third_width + " 0 rlineto\n"; // bottom right
+
+	output += "-" + third_width + " " + half_width + " rlineto\n";
+	output += third_width + " " + half_width + " rlineto\n"; // top right
+
+	output += "-" + third_width + " 0 rlineto\n";
+	output += "-" + sixth_width + " -" + third_width + " rlineto\n";
+	output += "-" + sixth_width + " " + third_width + " rlineto\n";
+	output += "-" + third_width + " 0 rlineto\n"; // top left
+
+	output += third_width + " -" + half_width + " rlineto\n";
+	output += "closepath\nstroke\ngrestore\n";
+
+	return output;
+}
 
 VerticalShapes::VerticalShapes(std::initializer_list<std::shared_ptr<Shape>> list) : _shapeList(list)
 {
@@ -394,4 +423,9 @@ std::shared_ptr<VerticalShapes> Vertical(std::initializer_list<std::shared_ptr<S
 std::shared_ptr<HorizontalShapes> Horizontal(std::initializer_list<std::shared_ptr<Shape>> list)
 {
 	return std::make_shared<HorizontalShapes>(list);
+}
+
+std::shared_ptr<MultiplyShape> Multiply(double width)
+{
+	return std::make_shared<MultiplyShape>(width);
 }
