@@ -1,27 +1,36 @@
 # CPS
 A C++ to Postscript conversion project.
 
-# Shape Classes
+## Source Directory
 
-Shape.hpp contains
-	A virtual class base which contains a height weight and toPostScript functions 
-	Multiple shape classes with constructors and toPostScript functions based off of the main virtual shape class
-	Multiple compound shape classes that reference the shape classes using pointers 
-	Shared pointers to each of the classes
+Shape.hpp / Shape.cpp
 
-Shape.cpp contains
-	toPostScript functions and constructor functions for the different shape and compound shapes
+  * A virtual base class which contains the height, width and ToPostScript function declarations
+  * Multiple derived basic shape classes
+  * Multiple compound shape classes
+  * Helper functions for generating smart pointers to shape objects
+  * Detailed implementation of constructors and ToPostScript functions
 
-# Tests
+CPS.hpp / CPS.cpp contains
 
-unit_tests_ctors.cpp
-	Tests inputs for each constructor class to account for each of the classes to check for impossible input parameters
-	such as negative numbers and impossible shapes
+  * Definition of function for writing PostScript files
 
-unit_tests_output.cpp
-	Tests for the amount of certain functions are called into the .ps code such (eg triangles only having 2 "rline") 
+main.cpp
 
-# Visual Output
+  * Demonstration of generation of several output files using the shape language
 
-visual_output_main.cpp
-	creates .ps code outputs or each of the classes 
+Visuals Directory
+
+  * Generated PostScript and converted PDF files of shape output from main.cpp
+
+
+## Tests Directory
+
+Unit Tests
+
+  * Testing of constructors and properties using Catch2
+  * Primitive testing of ToPostScript() output strings (see testing README for details)
+
+Visual Tests
+
+  * Regularly regenerated and tested .ps output form visual_output_main.cpp (see testing README for details)
