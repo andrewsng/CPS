@@ -84,6 +84,14 @@ TEST_CASE("SquareShape output generates correct number of lines") {
 	REQUIRE(Number_Substring_Occurences(s_out, "closepath") == 1);
 }
 
+TEST_CASE("SquareShape width and height") {
+
+	SquareShape s(235.63);
+
+	REQUIRE(s.Width() == Approx(235.63));
+	REQUIRE(s.Height() == Approx(235.63));
+}
+
 TEST_CASE("TriangleShape output generates correct number of lines") {
 
 	TriangleShape t(92);
