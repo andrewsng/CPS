@@ -57,7 +57,7 @@ Translation
     only as the last step before drawing.
   * As an example, consider the following drawing. Presently, achieving this relative placement of *two basic shapes* would require using a layered shape that contains two vertical shapes, each containing horizontal shapes built from a basic shape along with properly dimensioned spacers. Whew.
 
-![Example Sketch](https://github.com/uaf372/CPS/blob/main/limitation-example.png?raw=true)
+<p align="center"><img src="https://github.com/uaf372/CPS/blob/main/limitation-example.png"></p>
     
  Tessellation
  
