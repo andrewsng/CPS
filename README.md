@@ -34,3 +34,13 @@ Unit Tests
 Visual Tests
 
   * Regularly regenerated and tested .ps output form visual_output_main.cpp (see testing [README](https://github.com/uaf372/CPS/tree/main/tests) for details)
+
+
+## Critique
+
+Translation
+
+  * Currently, positioning shapes to be drawn in specific places is a difficult task to get right, requiring use of Horizontal, Vertical, and Spacer shapes.
+  * An actual TranslatedShape derived class might be a solution, and would go nicely with the ScaledShape and RotatedShape. However, there are potential issues
+    with maintaining their bounding boxes, as well as determining how they interact when placed in compound shapes. Maybe a good practice would be to Translate 
+    only as the last step before drawing.
