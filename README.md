@@ -61,5 +61,5 @@ Translation
     
  Tessellation
  
- * While the shape definitions, including compound shapes, do allow for creating drawings easily piece by piece, generating repetitive patterns non-recursively can be cumbersome. (see the hexagonal lattice example in main.cpp)
- * One way to avoid needing to write such messy code for a repetitve pattern would be to develop a Tessellation compound shape that takes as input bounding dimensions, a base shape, and a tiling origin. This new compound shape would then build as many vertical and horizontal shapes are required to fill the specified bounds with a tiling of the base shape.
+ * While the shape definitions, including compound shapes, do allow for creating drawings easily piece by piece, generating repetitive patterns can be cumbersome. (see the hexagonal lattice example in main.cpp)
+ * One way to avoid writing such messy code for a repetitve pattern would be to develop a Tessellation compound shape that takes as input bounding dimensions, a base shape, and a tiling origin. This new compound shape would then build as many vertical and horizontal shapes are required to fill the specified bounds with a tiling of the base shape.
