@@ -42,7 +42,6 @@ Abstractions
 
   * The guidelines provided for the shape abstractions do seem to be well-designed. Writing new shapes requires minimal effort, and the common base makes working with collections of shapes fairly intuitive.
   * CPS as specified conforms to the Open / Closed principle. Extending the project to include customization to the shapes such as colors, fills, and linewidths would require minimal modification to the Shape classes as written. Extending the project to include further shapes or functionality also requires little or no modification of existing code.
-  * CPS as specified conforms to the Interface Segregation principle. At present, there is a single function for writing one page of PostScript based on "one shape", which may be a full drawing built from compound shapes. Additional client interfaces could be developed that output collections of pages, or other types of PostScript files, without needing to rely on one another *or* make changes to the Shape Language.
 
 Expressiveness
 
