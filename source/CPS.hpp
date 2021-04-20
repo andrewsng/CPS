@@ -2,6 +2,7 @@
 #define UAF372_CPS_CPS_H
 
 #include "Shape.hpp"
+#include "CompoundShape.hpp"
 
 #include <iostream>
 #include <fstream>

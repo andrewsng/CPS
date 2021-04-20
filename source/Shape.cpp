@@ -184,23 +184,6 @@ std::string SierpinskiShape::ToPostScript() const
 	return output;
 }
 
-LayeredShapes::LayeredShapes(std::initializer_list<std::shared_ptr<Shape>> list) : _shapeList(list) 
-{
-	_width = std::max(list, [](auto& a, auto& b) {	return a->Width() < b->Width();	})->Width();
-	_height = std::max(list, [](auto& a, auto& b) {	return a->Height() < b->Height(); })->Height();
-}
-
-std::string LayeredShapes::ToPostScript() const {
-	std::string output{};
-	for (const auto &shape : _shapeList)
-	{
-		output += shape->ToPostScript();
-		output += "\n";
-	}
-	
-	return output;
-}
-
 SpacerShape::SpacerShape(double width, double height)
 {
 	if (width <= 0 || height <= 0) throw std::invalid_argument("Shape dimensions must be positive");
@@ -430,11 +413,6 @@ std::shared_ptr<ScaledShape> Scaled(std::shared_ptr<Shape> shape, double fx, dou
 std::shared_ptr<RotatedShape> Rotated(std::shared_ptr<Shape> shape, Angle rotationAngle)
 {
 	return std::make_shared<RotatedShape>(shape, rotationAngle);
-}
-
-std::shared_ptr<LayeredShapes> Layered(std::initializer_list<std::shared_ptr<Shape>> list)
-{
-	return std::make_shared<LayeredShapes>(list);
 }
 
 std::shared_ptr<VerticalShapes> Vertical(std::initializer_list<std::shared_ptr<Shape>> list)
