@@ -39,6 +39,28 @@ public:
 
 };
 
+class VerticalShapes : public CompoundShapes {
+
+private:
+
+	double _width;
+	double _height;
+	std::vector<std::shared_ptr<Shape>> _shapeList;
+
+    [[nodiscard]] virtual std::vector<std::shared_ptr<Shape>> getShapes() const override { return _shapeList; }
+    [[nodiscard]] std::string moveToStartPosition() const override;
+    [[nodiscard]] std::string moveHalfwayForShape(const std::shared_ptr<Shape> &shape) const override;
+
+public:
+
+	[[nodiscard]] double Width() const override { return _width; }
+	[[nodiscard]] double Height() const override { return _height; }
+	VerticalShapes(std::initializer_list<std::shared_ptr<Shape>> list);
+
+};
+
 std::shared_ptr<LayeredShapes> Layered(std::initializer_list<std::shared_ptr<Shape>> list);
+
+std::shared_ptr<VerticalShapes> Vertical(std::initializer_list<std::shared_ptr<Shape>> list);
 
 #endif
