@@ -8,3 +8,6 @@
 .vscode
 .vs
 /visual_test_output
+*/build/
+/visuals/
+*/visuals/
