@@ -63,8 +63,28 @@ public:
 
 };
 
+class HorizontalShapes : public CompoundShapes {
+
+private:
+
+	double _width;
+	double _height;
+
+    [[nodiscard]] std::string moveToStartPosition() const override;
+    [[nodiscard]] std::string moveHalfwayForShape(const std::shared_ptr<Shape> &shape) const override;
+
+public:
+
+	[[nodiscard]] double Width() const override { return _width; }
+	[[nodiscard]] double Height() const override { return _height; }
+	HorizontalShapes(std::initializer_list<std::shared_ptr<Shape>> list);
+
+};
+
 std::shared_ptr<LayeredShapes> Layered(std::initializer_list<std::shared_ptr<Shape>> list);
 
 std::shared_ptr<VerticalShapes> Vertical(std::initializer_list<std::shared_ptr<Shape>> list);
+
+std::shared_ptr<HorizontalShapes> Horizontal(std::initializer_list<std::shared_ptr<Shape>> list);
 
 #endif

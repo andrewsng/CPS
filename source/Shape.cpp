@@ -273,34 +273,6 @@ std::string DivideShape::ToPostScript() const
 	return output;
 }
 
-HorizontalShapes::HorizontalShapes(std::initializer_list<std::shared_ptr<Shape>> list) : _shapeList(list)
-{
-	_width = std::accumulate(list.begin(), list.end(), 0.0, [](double sum, const auto& s) {return sum + s->Width(); });
-	_height = std::max(list, [](auto& a, auto& b) {	return a->Height() < b->Height(); })->Height();
-}
-
-
-std::string HorizontalShapes::ToPostScript() const
-{
-
-	std::string output{"gsave\n"};
-
-	output += std::to_string(-Width() / 2) + " 0 rmoveto\n";
-
-	for (const auto& shape : _shapeList)
-	{
-		output += std::to_string(shape->Width() / 2) + " 0 rmoveto\n";
-
-		output += shape->ToPostScript();
-
-		output += std::to_string(shape->Width() / 2) + " 0 rmoveto\n";
-		output += "\n";
-	}
-	output += "grestore\n";
-
-	return output;
-}
-
 std::string ScaledShape::ToPostScript() const
 {
 	std::string output{};
@@ -386,11 +358,6 @@ std::shared_ptr<ScaledShape> Scaled(std::shared_ptr<Shape> shape, double fx, dou
 std::shared_ptr<RotatedShape> Rotated(std::shared_ptr<Shape> shape, Angle rotationAngle)
 {
 	return std::make_shared<RotatedShape>(shape, rotationAngle);
-}
-
-std::shared_ptr<HorizontalShapes> Horizontal(std::initializer_list<std::shared_ptr<Shape>> list)
-{
-	return std::make_shared<HorizontalShapes>(list);
 }
 
 std::shared_ptr<MultiplyShape> Multiply(double width)
