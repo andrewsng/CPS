@@ -20,7 +20,7 @@
     return output;
 }
 
-LayeredShapes::LayeredShapes(std::initializer_list<std::shared_ptr<Shape>> list) : _shapeList(list) 
+LayeredShapes::LayeredShapes(std::initializer_list<std::shared_ptr<Shape>> list) : CompoundShapes(list) 
 {
 	_width = std::max(list, [](auto& a, auto& b) {	return a->Width() < b->Width();	})->Width();
 	_height = std::max(list, [](auto& a, auto& b) {	return a->Height() < b->Height(); })->Height();
@@ -36,7 +36,7 @@ LayeredShapes::LayeredShapes(std::initializer_list<std::shared_ptr<Shape>> list)
     return std::string{};
 }
 
-VerticalShapes::VerticalShapes(std::initializer_list<std::shared_ptr<Shape>> list) : _shapeList(list)
+VerticalShapes::VerticalShapes(std::initializer_list<std::shared_ptr<Shape>> list) : CompoundShapes(list)
 {
 	_width = std::max(list, [](auto& a, auto& b) {	return a->Width() < b->Width();	})->Width();
 	_height = std::accumulate(list.begin(), list.end(), 0.0, [](double sum, const auto& s) {return sum + s->Height(); });

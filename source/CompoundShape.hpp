@@ -4,14 +4,22 @@
 #include "Shape.hpp"
 
 class CompoundShapes : public Shape {
+
+private:
+
+    std::vector<std::shared_ptr<Shape>> _shapeList;
     
 protected:
 
-    [[nodiscard]] virtual std::vector<std::shared_ptr<Shape>> getShapes() const = 0;
+    [[nodiscard]] std::vector<std::shared_ptr<Shape>> getShapes() const { return _shapeList; }
     [[nodiscard]] virtual std::string moveToStartPosition() const = 0;
     [[nodiscard]] virtual std::string moveHalfwayForShape(const std::shared_ptr<Shape> &shape) const = 0;
     
 public:
+
+    CompoundShapes::CompoundShapes(std::initializer_list<std::shared_ptr<Shape>> list)
+        : _shapeList(list)
+    {}
 
     virtual ~CompoundShapes() = default;
 
@@ -25,9 +33,7 @@ private:
 
     double _width;
     double _height;
-    std::vector<std::shared_ptr<Shape>> _shapeList;
 
-    [[nodiscard]] virtual std::vector<std::shared_ptr<Shape>> getShapes() const override { return _shapeList; }
     [[nodiscard]] std::string moveToStartPosition() const override;
     [[nodiscard]] std::string moveHalfwayForShape(const std::shared_ptr<Shape> &shape) const override;
 	
@@ -45,9 +51,7 @@ private:
 
 	double _width;
 	double _height;
-	std::vector<std::shared_ptr<Shape>> _shapeList;
 
-    [[nodiscard]] virtual std::vector<std::shared_ptr<Shape>> getShapes() const override { return _shapeList; }
     [[nodiscard]] std::string moveToStartPosition() const override;
     [[nodiscard]] std::string moveHalfwayForShape(const std::shared_ptr<Shape> &shape) const override;
 
